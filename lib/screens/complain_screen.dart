@@ -1,6 +1,7 @@
-import 'package:demo_app1/models/complain.dart';
-import 'package:demo_app1/widget/complain_item.dart';
 import 'package:flutter/material.dart';
+
+import '../models/complain.dart';
+import '../widget/complain_item.dart';
 
 class ComplainScreen extends StatelessWidget {
   final List<Complain> complains;
