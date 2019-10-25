@@ -1,17 +1,19 @@
-import 'package:demo_app1/widget/complain_item.dart';
 import 'package:flutter/material.dart';
 
 import '../models/complain.dart';
+import '../widget/complain_item.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const routeName = '/profile';
-  
+
   final List<Complain> complains;
   ProfileScreen(this.complains);
 
   @override
   Widget build(BuildContext context) {
-    final Complain complain = ModalRoute.of(context).settings.arguments;
+    List<Complain> complain = complains.where((comp) {
+      return comp.name.toLowerCase() == "fatih emin öge ";
+    }).toList();
 
     return Column(
       children: <Widget>[
@@ -37,15 +39,22 @@ class ProfileScreen extends StatelessWidget {
         Divider(
           thickness: 5,
         ),
-        identical(complain.name.toLowerCase(), "fatih emin öge")
-            ? ComplainItem(
-                name: complain.name,
-                complain: complain.complain,
-                location: complain.location,
-                upVote: complain.upVote,
-                downVote: complain.downVote,
-              )
-            : Container(),
+        Container(
+          child: complain.isNotEmpty
+              ? ListView.builder(
+                  itemBuilder: (ctx, index) {
+                    return ComplainItem(
+                      name: complain[index].name,
+                      complain: complain[index].complain,
+                      location: complain[index].location,
+                      upVote: complain[index].upVote,
+                      downVote: complain[index].downVote,
+                    );
+                  },
+                  itemCount: complain.length,
+                )
+              : Container(),
+        )
       ],
     );
   }

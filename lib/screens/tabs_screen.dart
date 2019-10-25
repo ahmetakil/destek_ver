@@ -22,7 +22,7 @@ class _TabsScreenState extends State<TabsScreen> {
     if (_selectedPageIndex == 0) {
       return ComplainScreen(widget.complains);
     } else {
-      return ProfileScreen();
+      return ProfileScreen(widget.complains);
     }
   }
 
