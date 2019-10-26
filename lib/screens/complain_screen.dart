@@ -12,7 +12,7 @@ class ComplainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     if (complains.isEmpty) {
       return Center(
-        child: Text('Daha hiç şikayet yapılmamış'),
+        child: Text('Şikayet eklemeye başla!.',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
       );
     }
     return ListView.builder(

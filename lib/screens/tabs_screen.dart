@@ -43,7 +43,7 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Demo App'),
+        title: Text('DestekVer'),
       ),
       body: _selectedPage(),
       bottomNavigationBar: BottomNavigationBar(

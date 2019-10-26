@@ -7,6 +7,7 @@ class ComplainDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Complain comp = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
       body: Center(),
     );

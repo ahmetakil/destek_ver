@@ -11,15 +11,15 @@ class _NewComplainState extends State<NewComplain> {
   final _nameController = TextEditingController();
   final _complainController = TextEditingController();
   final _locationController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   void _submitData() {
     final Function addComp = ModalRoute.of(context).settings.arguments;
 
-    if (_nameController.text.isEmpty ||
-        _complainController.text.isEmpty ||
-        _locationController.text.isEmpty) {
-      return;
-    }
+   if(! _formKey.currentState.validate()){
+     return;
+   }
+
     addComp(
       _nameController.text,
       _complainController.text,
@@ -37,39 +37,81 @@ class _NewComplainState extends State<NewComplain> {
       appBar: AppBar(
         title: Text('Şikayet Ekle'),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Ad-Soyad',
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: Form(
+              key: _formKey,
+              child: SingleChildScrollView(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      validator: (String value)  {
+                        if(value.isEmpty){
+                          return "Lütfen Isminizi Girin";
+                        }else if(value.length < 3){
+                          return "Isminiz en az 4 karakter olmalıdır";
+                        }else{
+                          return null;
+                        }
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Ad-Soyad',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                        ),
+                      ),
+                      controller: _nameController,
+                    ),
+                    SizedBox(height: 30),
+                    TextFormField(
+                      validator: (String value)  {
+                        if(value.isEmpty){
+                          return "Lütfen Şikayetinizi Girin";
+                        }else if(value.length < 5){
+                          return "Şikayetiniz en az 6 karakter olmalıdır";
+                        }else{
+                          return null;
+                        }
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Şikayet',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                      ),
+
+                      controller: _complainController,
+                      maxLines: 5,
+                    ),
+                    SizedBox(height: 30),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Konum',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                      ),
+                      controller: _locationController,
+                    ),
+
+                  ],
+                ),
               ),
-              controller: _nameController,
             ),
-            SizedBox(height: 30),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Şikayet',
-              ),
-              controller: _complainController,
-              maxLines: 5,
-            ),
-            SizedBox(height: 30),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Konum',
-              ),
-              controller: _locationController,
-            ),
-            RaisedButton(
-              child: Text('Şikayet ekle'),
+          ),
+          Container(
+            width: double.infinity,
+            height: 80,
+            child: RaisedButton(
+              child: Text('Şikayet ekle',style: TextStyle(fontSize: 22),),
               textColor: Colors.white,
               color: Theme.of(context).primaryColor,
               onPressed: _submitData,
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
