@@ -1,7 +1,7 @@
+import 'package:demo_app1/widget/complain_item.dart';
 import 'package:flutter/material.dart';
 
 import '../models/complain.dart';
-import '../widget/complain_item.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const routeName = '/profile';
@@ -9,12 +9,8 @@ class ProfileScreen extends StatelessWidget {
   final List<Complain> complains;
   ProfileScreen(this.complains);
 
-  @override
-  Widget build(BuildContext context) {
-    List<Complain> complain = complains.where((comp) {
-      return comp.name.toLowerCase() == "fatih emin öge ";
-    }).toList();
-
+  Widget buildScreen(
+      List<Complain> complain, String name, BuildContext context) {
     return Column(
       children: <Widget>[
         Row(
@@ -28,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(10),
               child: Text(
-                "Fatih Emin Öge",
+                name,
                 style: TextStyle(
                   fontSize: 18,
                 ),
@@ -39,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
         Divider(
           thickness: 5,
         ),
-        Container(
+        Expanded(
           child: complain.isNotEmpty
               ? ListView.builder(
                   itemBuilder: (ctx, index) {
@@ -54,8 +50,36 @@ class ProfileScreen extends StatelessWidget {
                   itemCount: complain.length,
                 )
               : Container(),
-        )
+        ),
       ],
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Complain complainProfile = ModalRoute.of(context).settings.arguments;
+    List<Complain> complain = complains.where((comp) {
+      return identical(
+        comp.name,
+        complainProfile == null ? "fatih emin öge" : complainProfile.name,
+      );
+    }).toList();
+
+    return complainProfile == null
+        ? buildScreen(
+            complain,
+            'Fatih Emin Öge',
+            context,
+          )
+        : Scaffold(
+            appBar: AppBar(
+              title: Text('DestekVar'),
+            ),
+            body: buildScreen(
+              complain,
+              complainProfile.name,
+              context,
+            ),
+          );
   }
 }

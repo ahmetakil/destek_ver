@@ -1,3 +1,4 @@
+import 'package:demo_app1/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 import './screens/new_complain.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Complain> _complains = [];
-
+  
   void _addNewComplain(
     String name,
     String complain,
@@ -48,6 +49,7 @@ class _MyAppState extends State<MyApp> {
         '/': (ctx) => TabsScreen(_complains, _addNewComplain),
         NewComplain.routeName: (ctx) => NewComplain(),
         ComplainDetailScreen.routeName: (ctx) => ComplainDetailScreen(),
+        ProfileScreen.routeName: (ctx) => ProfileScreen(_complains)
       },
     );
   }

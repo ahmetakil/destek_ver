@@ -5,13 +5,12 @@ import 'package:intl/intl.dart';
 
 import '../screens/complain_detail_screen.dart';
 
-class ComplainItem extends StatelessWidget {
+class ComplainItem extends StatefulWidget {
   final String name;
   final String complain;
   final String location;
-  final DateTime dateTime = DateTime.now();
-  final int upVote;
-  final int downVote;
+  int upVote;
+  int downVote;
 
   ComplainItem({
     @required this.name,
@@ -21,13 +20,22 @@ class ComplainItem extends StatelessWidget {
     @required this.downVote,
   });
 
+  @override
+  _ComplainItemState createState() => _ComplainItemState();
+}
+
+class _ComplainItemState extends State<ComplainItem> {
+  final DateTime dateTime = DateTime.now();
+  bool bUpvote = false;
+  bool bDownVote = false;
+
   void selectComp(BuildContext context) {
     final _complain = Complain(
-      name: name,
-      complain: this.complain,
-      upVote: upVote,
-      downVote: downVote,
-      location: location,
+      name: widget.name,
+      complain: widget.complain,
+      upVote: widget.upVote,
+      downVote: widget.downVote,
+      location: widget.location,
     );
     Navigator.of(context).pushNamed(
       ComplainDetailScreen.routeName,
@@ -37,11 +45,11 @@ class ComplainItem extends StatelessWidget {
 
   void goToProfile(BuildContext context) {
     final _complain = Complain(
-      name: name,
-      complain: this.complain,
-      upVote: upVote,
-      downVote: downVote,
-      location: location,
+      name: widget.name,
+      complain: widget.complain,
+      upVote: widget.upVote,
+      downVote: widget.downVote,
+      location: widget.location,
     );
     Navigator.of(context).pushNamed(
       ProfileScreen.routeName,
@@ -69,7 +77,7 @@ class ComplainItem extends StatelessWidget {
                       SizedBox(
                         width: 10,
                       ),
-                      Text(name),
+                      Text(widget.name),
                     ],
                   ),
                 ),
@@ -83,7 +91,7 @@ class ComplainItem extends StatelessWidget {
               height: 100,
               width: 300,
               child: Text(
-                complain,
+                widget.complain,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -98,20 +106,62 @@ class ComplainItem extends StatelessWidget {
               children: <Widget>[
                 Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.arrow_upward,
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          if (bUpvote) {
+                            bUpvote = false;
+                            widget.upVote--;
+                          } else {
+                            widget.upVote++;
+                            bUpvote = true;
+                            bDownVote = false;
+                            widget.downVote > 0
+                                ? widget.downVote--
+                                : widget.downVote;
+                          }
+                        });
+                      },
+                      child: Row(
+                        children: <Widget>[
+                          bUpvote
+                              ? Icon(Icons.arrow_upward, color: Colors.blue)
+                              : Icon(Icons.arrow_upward),
+                          Text(widget.upVote.toString()),
+                        ],
+                      ),
                     ),
-                    Text(upVote.toString()),
                     SizedBox(
                       width: 5,
                     ),
-                    Icon(Icons.arrow_downward),
-                    Text(
-                      downVote.toString(),
-                    )
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          if (bDownVote) {
+                            bDownVote = false;
+                            widget.downVote--;
+                          } else {
+                            widget.downVote++;
+                            bDownVote = true;
+                            bUpvote = false;
+                            widget.upVote > 0 ? widget.upVote-- : widget.upVote;
+                          }
+                        });
+                      },
+                      child: Row(
+                        children: <Widget>[
+                          bDownVote
+                              ? Icon(Icons.arrow_downward, color: Colors.blue)
+                              : Icon(Icons.arrow_downward),
+                          Text(
+                            widget.downVote.toString(),
+                          )
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-                Text(location)
+                Text(widget.location)
               ],
             ),
           )
