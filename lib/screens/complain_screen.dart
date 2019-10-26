@@ -24,11 +24,7 @@ class ComplainScreen extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (ctx, index) {
         return ComplainItem(
-          name: complains[index].name,
-          complain: complains[index].complain,
-          location: complains[index].location,
-          upVote: complains[index].upVote,
-          downVote: complains[index].downVote,
+          complains[index],
         );
       },
       itemCount: complains.length,

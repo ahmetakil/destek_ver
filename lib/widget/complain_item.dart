@@ -1,64 +1,38 @@
-import 'package:demo_app1/models/complain.dart';
-import 'package:demo_app1/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../models/complain.dart';
+import '../screens/profile_screen.dart';
 import '../screens/complain_detail_screen.dart';
 
 class ComplainItem extends StatefulWidget {
-  final String name;
-  final String complain;
-  final String location;
-  int upVote;
-  int downVote;
+  final Complain complain;
 
-  ComplainItem({
-    @required this.name,
-    @required this.complain,
-    @required this.location,
-    @required this.upVote,
-    @required this.downVote,
-  });
+  ComplainItem(this.complain);
 
   @override
   _ComplainItemState createState() => _ComplainItemState();
 }
 
 class _ComplainItemState extends State<ComplainItem> {
-  final DateTime dateTime = DateTime.now();
-  bool bUpvote = false;
-  bool bDownVote = false;
 
   void selectComp(BuildContext context) {
-    final _complain = Complain(
-      name: widget.name,
-      complain: widget.complain,
-      upVote: widget.upVote,
-      downVote: widget.downVote,
-      location: widget.location,
-    );
     Navigator.of(context).pushNamed(
       ComplainDetailScreen.routeName,
-      arguments: _complain,
+      arguments: widget.complain,
     );
   }
 
   void goToProfile(BuildContext context) {
-    final _complain = Complain(
-      name: widget.name,
-      complain: widget.complain,
-      upVote: widget.upVote,
-      downVote: widget.downVote,
-      location: widget.location,
-    );
     Navigator.of(context).pushNamed(
       ProfileScreen.routeName,
-      arguments: _complain,
+      arguments: widget.complain,
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    Complain comp = widget.complain;
     return Card(
       margin: EdgeInsets.all(10),
       elevation: 5,
@@ -77,11 +51,11 @@ class _ComplainItemState extends State<ComplainItem> {
                       SizedBox(
                         width: 10,
                       ),
-                      Text(widget.name),
+                      Text(comp.name),
                     ],
                   ),
                 ),
-                Text(DateFormat.yMd().format(dateTime)),
+                Text(DateFormat.yMd().format(comp.dateTime)),
               ],
             ),
           ),
@@ -91,7 +65,7 @@ class _ComplainItemState extends State<ComplainItem> {
               height: 100,
               width: 300,
               child: Text(
-                widget.complain,
+                comp.complain,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -109,25 +83,20 @@ class _ComplainItemState extends State<ComplainItem> {
                     InkWell(
                       onTap: () {
                         setState(() {
-                          if (bUpvote) {
-                            bUpvote = false;
-                            widget.upVote--;
+                          if (comp.upVote > 0) {
+                            comp.upVote--;
                           } else {
-                            widget.upVote++;
-                            bUpvote = true;
-                            bDownVote = false;
-                            widget.downVote > 0
-                                ? widget.downVote--
-                                : widget.downVote;
+                            comp.upVote++;
                           }
+                          comp.downVote = 0;
                         });
                       },
                       child: Row(
                         children: <Widget>[
-                          bUpvote
+                          comp.upVote > 0
                               ? Icon(Icons.arrow_upward, color: Colors.blue)
                               : Icon(Icons.arrow_upward),
-                          Text(widget.upVote.toString()),
+                          Text(comp.upVote.toString()),
                         ],
                       ),
                     ),
@@ -137,31 +106,28 @@ class _ComplainItemState extends State<ComplainItem> {
                     InkWell(
                       onTap: () {
                         setState(() {
-                          if (bDownVote) {
-                            bDownVote = false;
-                            widget.downVote--;
+                          if (comp.downVote > 0) {
+                            comp.downVote--;
                           } else {
-                            widget.downVote++;
-                            bDownVote = true;
-                            bUpvote = false;
-                            widget.upVote > 0 ? widget.upVote-- : widget.upVote;
+                            comp.downVote++;
                           }
+                          comp.upVote = 0;
                         });
                       },
                       child: Row(
                         children: <Widget>[
-                          bDownVote
+                          comp.downVote > 0
                               ? Icon(Icons.arrow_downward, color: Colors.blue)
                               : Icon(Icons.arrow_downward),
                           Text(
-                            widget.downVote.toString(),
+                            comp.downVote.toString(),
                           )
                         ],
                       ),
                     ),
                   ],
                 ),
-                Text(widget.location)
+                Text(comp.location)
               ],
             ),
           )

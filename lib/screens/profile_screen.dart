@@ -6,11 +6,14 @@ import '../models/complain.dart';
 class ProfileScreen extends StatelessWidget {
   static const routeName = '/profile';
 
-  final List<Complain> complains;
-  ProfileScreen(this.complains);
+  final List<Complain> allComplains;
+  ProfileScreen(this.allComplains);
 
   Widget buildScreen(
-      List<Complain> complain, String name, BuildContext context) {
+    List<Complain> complain,
+    String name,
+    BuildContext context,
+  ) {
     return Column(
       children: <Widget>[
         Row(
@@ -40,11 +43,7 @@ class ProfileScreen extends StatelessWidget {
               ? ListView.builder(
                   itemBuilder: (ctx, index) {
                     return ComplainItem(
-                      name: complain[index].name,
-                      complain: complain[index].complain,
-                      location: complain[index].location,
-                      upVote: complain[index].upVote,
-                      downVote: complain[index].downVote,
+                      complain[index],
                     );
                   },
                   itemCount: complain.length,
@@ -58,7 +57,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Complain complainProfile = ModalRoute.of(context).settings.arguments;
-    List<Complain> complain = complains.where((comp) {
+    List<Complain> personsComplains = allComplains.where((comp) {
       return identical(
         comp.name,
         complainProfile == null ? "fatih emin öge" : complainProfile.name,
@@ -67,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
 
     return complainProfile == null
         ? buildScreen(
-            complain,
+            personsComplains,
             'Fatih Emin Öge',
             context,
           )
@@ -76,7 +75,7 @@ class ProfileScreen extends StatelessWidget {
               title: Text('DestekVar'),
             ),
             body: buildScreen(
-              complain,
+              personsComplains,
               complainProfile.name,
               context,
             ),
