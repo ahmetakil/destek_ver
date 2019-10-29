@@ -67,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
     return complainProfile == null
         ? buildScreen(
             personsComplains,
-            'Fatih Emin Öge',
+            'Ahmet Akıl',
             context,
           )
         : Scaffold(

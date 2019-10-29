@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Destek Ver',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.deepPurpleAccent,
+        primaryColor: Colors.green,
         accentColor: Colors.black,
       ),
       routes: {
@@ -54,3 +54,35 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+/*
+TODO:
+  1- Profilde son şikayetler
+  2- Gerçek konum ekleme isterse elle veya otomatik ++
+  3- Gönderilecek birim (büyükşehir veya küçükşehir) --
+  4- Fake şikayet türleri -> [Tüm şikayetler-{Cevaplanan ve çözülen},Cevaplanan,Çözülen] ++
+  5- Anket sekmesi ++
+  6- Öneri sekmesi -
+  7- Konuya, konuma göre filtreleme ++
+
+  - eksi oy kaldırılabilir
+  - şikayete medya ekleme [Resim-Video]
+  - konu eklenebilir
+
+
+  == Ad-Soyad yerine Konu gelicek isim profilden çekilicek
+  == Şikayette 200 karakter sınırı
+  == Detaylı şikayrt ekranında harita içinde konum görüntüleme
+  == tarih AY/GUN/YIL
+  == floationg action buttonın yanına "Şikayet Ekle" yazısı
+  == Giriş yaparken 40 saniyede kayıt ol tarzı ifadeler
+
+
+https://medium.com/better-programming/flutter-tabbar-with-buttons-as-tabs-ios-style-4dff5ae6c055
+
+HAFTAYA:
+  - KONUM
+  - ANKET
+   - ŞİKAYET TÜRLER
+
+ */
