@@ -1,4 +1,6 @@
+import 'package:demo_app1/provider/complains_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NewComplain extends StatefulWidget {
   static const routeName = '/newComplain';
@@ -14,20 +16,17 @@ class _NewComplainState extends State<NewComplain> {
   final _formKey = GlobalKey<FormState>();
 
   void _submitData() {
-    final Function addComp = ModalRoute.of(context).settings.arguments;
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
 
-   if(! _formKey.currentState.validate()){
-     return;
-   }
+    Provider.of<ComplainsProvider>(context, listen: false).addNewComplain(
+        _nameController.text,
+        _complainController.text,
+        _locationController.text,
+        DateTime.now(),
+        0);
 
-    addComp(
-      _nameController.text,
-      _complainController.text,
-      _locationController.text,
-      DateTime.now(),
-      0,
-      0,
-    );
     Navigator.of(context).pop();
   }
 
@@ -47,41 +46,38 @@ class _NewComplainState extends State<NewComplain> {
                 child: Column(
                   children: <Widget>[
                     TextFormField(
-                      validator: (String value)  {
-                        if(value.isEmpty){
+                      validator: (String value) {
+                        if (value.isEmpty) {
                           return "Lütfen Isminizi Girin";
-                        }else if(value.length < 3){
+                        } else if (value.length < 3) {
                           return "Isminiz en az 4 karakter olmalıdır";
-                        }else{
+                        } else {
                           return null;
                         }
                       },
                       decoration: InputDecoration(
                         labelText: 'Ad-Soyad',
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)
-                        ),
+                            borderRadius: BorderRadius.circular(20)),
                       ),
                       controller: _nameController,
                     ),
                     SizedBox(height: 30),
                     TextFormField(
-                      validator: (String value)  {
-                        if(value.isEmpty){
+                      validator: (String value) {
+                        if (value.isEmpty) {
                           return "Lütfen Şikayetinizi Girin";
-                        }else if(value.length < 5){
+                        } else if (value.length < 5) {
                           return "Şikayetiniz en az 6 karakter olmalıdır";
-                        }else{
+                        } else {
                           return null;
                         }
                       },
                       decoration: InputDecoration(
                         labelText: 'Şikayet',
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)
-                        ),
+                            borderRadius: BorderRadius.circular(20)),
                       ),
-
                       controller: _complainController,
                       maxLines: 5,
                     ),
@@ -90,12 +86,10 @@ class _NewComplainState extends State<NewComplain> {
                       decoration: InputDecoration(
                         labelText: 'Konum',
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)
-                        ),
+                            borderRadius: BorderRadius.circular(20)),
                       ),
                       controller: _locationController,
                     ),
-
                   ],
                 ),
               ),
@@ -105,7 +99,10 @@ class _NewComplainState extends State<NewComplain> {
             width: double.infinity,
             height: 80,
             child: RaisedButton(
-              child: Text('Şikayet ekle',style: TextStyle(fontSize: 22),),
+              child: Text(
+                'Şikayet ekle',
+                style: TextStyle(fontSize: 22),
+              ),
               textColor: Colors.white,
               color: Theme.of(context).primaryColor,
               onPressed: _submitData,

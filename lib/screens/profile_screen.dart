@@ -1,19 +1,16 @@
+import 'package:demo_app1/provider/complains_provider.dart';
 import 'package:demo_app1/widget/complain_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/complain.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const routeName = '/profile';
 
-  final List<Complain> allComplains;
-  ProfileScreen(this.allComplains);
 
   Widget buildScreen(
-    List<Complain> complain,
-    String name,
-    BuildContext context,
-  ) {
+      List<Complain> complain, String name, BuildContext context) {
     return Column(
       children: <Widget>[
         Row(
@@ -56,8 +53,10 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    List<Complain> complains = Provider.of<ComplainsProvider>(context).complains;
     final Complain complainProfile = ModalRoute.of(context).settings.arguments;
-    List<Complain> personsComplains = allComplains.where((comp) {
+    List<Complain> personsComplains = complains.where((comp) {
       return identical(
         comp.name,
         complainProfile == null ? "fatih emin öge" : complainProfile.name,

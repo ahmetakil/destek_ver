@@ -87,16 +87,6 @@ class ComplainDetailScreen extends StatelessWidget {
                       fontSize: 18,
                     ),
                   ),
-                  comp.downVote > 0
-                      ? Icon(
-                          Icons.arrow_downward,
-                          color: Colors.blue,
-                        )
-                      : Icon(Icons.arrow_downward),
-                  Text(comp.downVote.toString(),
-                      style: TextStyle(
-                        fontSize: 18,
-                      ))
                 ],
               ),
               Text(

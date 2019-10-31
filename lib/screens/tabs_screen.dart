@@ -5,71 +5,33 @@ import '../screens/profile_screen.dart';
 import '../models/complain.dart';
 import '../screens/new_complain.dart';
 
-class TabsScreen extends StatefulWidget {
-  final List<Complain> complains;
-  final Function addComp;
+class TabsScreen extends StatelessWidget {
 
-  TabsScreen(this.complains, this.addComp);
-
-  @override
-  _TabsScreenState createState() => _TabsScreenState();
-}
-
-class _TabsScreenState extends State<TabsScreen> {
-  int _selectedPageIndex = 0;
-
-  Widget _selectedPage() {
-
-    if (_selectedPageIndex == 0) {
-      return ComplainScreen(widget.complains);
-    } else {
-      return ProfileScreen(widget.complains);
-    }
-  }
-
-  void _selectPage(int index) {
-    setState(() {
-      _selectedPageIndex = index;
-    });
-  }
-
-  void _newComplainScreen() {
-    Navigator.of(context).pushNamed(
-      NewComplain.routeName,
-      arguments: widget.addComp,
-    );
-  }
+  List<Widget> _pages = [
+    ComplainScreen(),
+    ProfileScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('DestekVer'),
+    return DefaultTabController(
+      length: _pages.length,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('DestekVer'),
+        ),
+        body: TabBarView(
+          children: _pages,
+        ),
+        bottomNavigationBar: TabBar(
+          labelColor: Colors.green,
+          unselectedLabelColor: Colors.black,
+          tabs: <Widget>[
+            Tab(icon: Icon(Icons.comment),text: "Şikayetler",),
+            Tab(icon: Icon(Icons.account_circle),text:"Profil"),
+          ],
+        ),
       ),
-      body: _selectedPage(),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: _selectPage,
-        backgroundColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.black,
-        currentIndex: _selectedPageIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.comment),
-            title: Text('Şikayetler'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            title: Text('Profil'),
-          )
-        ],
-      ),
-      floatingActionButton: _selectedPageIndex == 0
-          ? FloatingActionButton(
-              child: Icon(Icons.add),
-              onPressed: _newComplainScreen,
-            )
-          : Container(),
     );
   }
 }

@@ -93,7 +93,6 @@ class _ComplainItemState extends State<ComplainItem> {
                             } else {
                               comp.upVote++;
                             }
-                            comp.downVote = 0;
                           });
                         },
                         child: Row(
@@ -107,28 +106,6 @@ class _ComplainItemState extends State<ComplainItem> {
                       ),
                       SizedBox(
                         width: 5,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            if (comp.downVote > 0) {
-                              comp.downVote--;
-                            } else {
-                              comp.downVote++;
-                            }
-                            comp.upVote = 0;
-                          });
-                        },
-                        child: Row(
-                          children: <Widget>[
-                            comp.downVote > 0
-                                ? Icon(Icons.arrow_downward, color: Colors.blue)
-                                : Icon(Icons.arrow_downward),
-                            Text(
-                              comp.downVote.toString(),
-                            )
-                          ],
-                        ),
                       ),
                     ],
                   ),
