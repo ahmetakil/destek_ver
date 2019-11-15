@@ -40,9 +40,11 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   Widget buildQuestions(String text, Widget widget) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
-          border: Border.all(),
+          border: Border.all(
+            color: Colors.grey
+          ),
           borderRadius: BorderRadius.circular(
             10,
           )),
@@ -153,6 +155,19 @@ class _SurveyScreenState extends State<SurveyScreen> {
                 ],
               ),
             ),
+            Container(
+              margin: EdgeInsets.only(top:10),
+              width: double.infinity,
+              height: 60,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                color: Colors.green,
+                onPressed: () {},
+                child: Text("Gönder",style: TextStyle(color: Colors.white,fontSize: 26),),
+              ),
+            )
           ],
         ),
       ),

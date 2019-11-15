@@ -52,31 +52,35 @@ class ComplainScreen extends StatelessWidget {
           itemCount: complains.length,
         ),
         Positioned(
-            right: 20,
-            bottom: 20,
+            right: -20,
+            bottom: 10,
             child: InkWell(
               onTap: () => Navigator.of(context).pushNamed(NewComplain.routeName),
               child: Container(
                 width: 100,
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.black),
-
+                  borderRadius: BorderRadius.circular(25),
                   color: Colors.green
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(6.0),
                   child: Column(
                     children: <Widget>[
-                      Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 32,
+                      Container(
+                        margin: EdgeInsets.only(right:10),
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 32,
+                        ),
                       ),
-                      Text(
-                        "Şikayet Ekle",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),
+                      Container(
+                        margin: EdgeInsets.only(right:12),
+                        child: Text(
+                          "Şikayet Ekle",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),
+                        ),
                       )
                     ],
                   ),

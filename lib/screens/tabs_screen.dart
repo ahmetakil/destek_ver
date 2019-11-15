@@ -1,3 +1,4 @@
+import 'package:demo_app1/screens/survey_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/complain_screen.dart';
@@ -9,6 +10,7 @@ class TabsScreen extends StatelessWidget {
 
   List<Widget> _pages = [
     ComplainScreen(),
+    SurveyScreen(),
     ProfileScreen()
   ];
 
@@ -17,6 +19,7 @@ class TabsScreen extends StatelessWidget {
     return DefaultTabController(
       length: _pages.length,
       child: Scaffold(
+        drawer: Drawer(),
         appBar: AppBar(
           title: Text('DestekVer'),
         ),
@@ -28,6 +31,7 @@ class TabsScreen extends StatelessWidget {
           unselectedLabelColor: Colors.black,
           tabs: <Widget>[
             Tab(icon: Icon(Icons.comment),text: "Şikayetler",),
+            Tab(icon: Icon(Icons.comment),text: "Anketler",),
             Tab(icon: Icon(Icons.account_circle),text:"Profil"),
           ],
         ),

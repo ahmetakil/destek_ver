@@ -70,4 +70,21 @@ HAFTAYA:
   - ANKET
    - ŞİKAYET TÜRLER
 
+   4 KASIM NOTLAR:
+    -- Anketler ekranı açılınca 3 tane düğme olucak (anketler için)
+    -- Anketin en üstünde başlık / kaç kişi çözdü / kaç dk sürer
+    -- Gönder dedikten sonra popup ekran
+    -- Profile puan eklenicek hepsi 5 puan
+    -- En sol üste drawer eklenicek filtreler için
+    -- profil ekranında kaydırlıabilir (twitter gibi)
+
+    15 KASIM NOTLAR:
+      - Şikayet verdikten sonra feedback (YOU DID IT!) alert dialog
+
+
+
+
+
+
+
  */
