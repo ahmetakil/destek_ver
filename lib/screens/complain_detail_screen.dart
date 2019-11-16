@@ -14,7 +14,7 @@ class ComplainDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'DestekVer',
-          style: Theme.of(context).textTheme.title,
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Column(

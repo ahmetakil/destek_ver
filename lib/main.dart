@@ -51,16 +51,12 @@ TODO:
   6- Öneri sekmesi -
   7- Konuya, konuma göre filtreleme ++
 
-  - eksi oy kaldırılabilir
   - şikayete medya ekleme [Resim-Video]
   - konu eklenebilir
 
 
   == Ad-Soyad yerine Konu gelicek isim profilden çekilicek
-  == Şikayette 200 karakter sınırı
   == Detaylı şikayrt ekranında harita içinde konum görüntüleme
-  == tarih AY/GUN/YIL
-  == floationg action buttonın yanına "Şikayet Ekle" yazısı
   == Giriş yaparken 40 saniyede kayıt ol tarzı ifadeler
 
 

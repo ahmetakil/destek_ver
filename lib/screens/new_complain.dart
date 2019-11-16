@@ -1,4 +1,5 @@
 import 'package:demo_app1/provider/complains_provider.dart';
+import 'package:demo_app1/widget/location_input.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -56,7 +57,7 @@ class _NewComplainState extends State<NewComplain> {
                         }
                       },
                       decoration: InputDecoration(
-                        labelText: 'Ad-Soyad',
+                        labelText: 'Konu',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
                       ),
@@ -69,9 +70,10 @@ class _NewComplainState extends State<NewComplain> {
                           return "Lütfen Şikayetinizi Girin";
                         } else if (value.length < 5) {
                           return "Şikayetiniz en az 6 karakter olmalıdır";
-                        } else {
-                          return null;
+                        } else if (value.length > 200) {
+                          return "Şikayetiniz en fazla 200 karakter olmalıdır";
                         }
+                        return null;
                       },
                       decoration: InputDecoration(
                         labelText: 'Şikayet',
@@ -81,15 +83,8 @@ class _NewComplainState extends State<NewComplain> {
                       controller: _complainController,
                       maxLines: 5,
                     ),
-                    SizedBox(height: 30),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Konum',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      controller: _locationController,
-                    ),
+                    SizedBox(height: 20),
+                    LocationInput(),
                   ],
                 ),
               ),
@@ -113,3 +108,5 @@ class _NewComplainState extends State<NewComplain> {
     );
   }
 }
+
+

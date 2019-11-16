@@ -1,23 +1,23 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+
+import 'package:location/location.dart';
 
 const API_KEY = "AIzaSyD915gwBSU971KjW52JegMbQgZBQB56TVQ";
 
 class LocationUtil{
 
-  static String generateLocImage({double latitude,double longitude}){
 
-    return "https://maps.googleapis.com/maps/api/staticmap?center=$latitude,$longitude&zoom=13&size=600x300&maptype=roadmap&markers=color:red%7Alabel:C%7C$latitude,$longitude&key=$API_KEY";
+  static Future<LocationData> getCurrentLocation() async{
+
+    final locData = await Location().getLocation();
+    return locData;
   }
 
-  static Future<String> getAddress(double lat,double lng) async{
+  static Future<String> generateLocImage() async{
 
-    final url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$lng&key=$API_KEY";
+    final locData = await getCurrentLocation();
 
-    final res = await http.get(url);
+    return "https://maps.googleapis.com/maps/api/staticmap?center=${locData.latitude},${locData.longitude}&size=600x300&zoom=13&markers=color:red%7Alabel:C%7C${locData.latitude},${locData.longitude}&key=$API_KEY";
 
-    return json.decode(res.body)["results"][0]["formatted_address"];
   }
-
 
 }
