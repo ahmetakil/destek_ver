@@ -51,7 +51,6 @@ class ComplainScreen extends StatelessWidget {
             Tab(text: 'Çözülenler')
           ],
         ),
-<<<<<<< HEAD
         body: Stack(
           children: <Widget>[
             TabBarView(
@@ -97,40 +96,6 @@ class ComplainScreen extends StatelessWidget {
                         )
                       ],
                     ),
-=======
-        Positioned(
-            right: -20,
-            bottom: 10,
-            child: InkWell(
-              onTap: () => Navigator.of(context).pushNamed(NewComplain.routeName),
-              child: Container(
-                width: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.green
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(6.0),
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(right:10),
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 32,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(right:12),
-                        child: Text(
-                          "Şikayet Ekle",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),
-                        ),
-                      )
-                    ],
->>>>>>> 1cb90027d53dbbfca21b239ec15b011bf0b1d16c
                   ),
                 ),
               ),

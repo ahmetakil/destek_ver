@@ -47,13 +47,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
     return Container(
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
-<<<<<<< HEAD
           border: Border.all(color: Colors.grey),
-=======
-          border: Border.all(
-            color: Colors.grey
-          ),
->>>>>>> 1cb90027d53dbbfca21b239ec15b011bf0b1d16c
           borderRadius: BorderRadius.circular(
             10,
           )),
@@ -182,30 +176,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     "Gönder",
                     style: TextStyle(color: Colors.white, fontSize: 26),
                   ),
-<<<<<<< HEAD
                 ),
               )
             ],
           ),
-=======
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top:10),
-              width: double.infinity,
-              height: 60,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                color: Colors.green,
-                onPressed: () {},
-                child: Text("Gönder",style: TextStyle(color: Colors.white,fontSize: 26),),
-              ),
-            )
-          ],
->>>>>>> 1cb90027d53dbbfca21b239ec15b011bf0b1d16c
         ),
       ),
     );
