@@ -100,7 +100,7 @@ class _NewComplainState extends State<NewComplain> {
             height: 80,
             child: RaisedButton(
               child: Text(
-                'Şikayet ekle',
+                'Şikayet Ekle',
                 style: TextStyle(fontSize: 22),
               ),
               textColor: Colors.white,

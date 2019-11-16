@@ -1,12 +1,12 @@
-import 'package:demo_app1/provider/complains_provider.dart';
-import 'package:demo_app1/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './screens/new_complain.dart';
 import './screens/tabs_screen.dart';
-import './models/complain.dart';
 import './screens/complain_detail_screen.dart';
+import './provider/complains_provider.dart';
+import './screens/profile_screen.dart';
+import './screens/survey_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,7 +33,8 @@ class _MyAppState extends State<MyApp> {
           '/': (ctx) => TabsScreen(),
           NewComplain.routeName: (ctx) => NewComplain(),
           ComplainDetailScreen.routeName: (ctx) => ComplainDetailScreen(),
-          ProfileScreen.routeName: (ctx) => ProfileScreen()
+          ProfileScreen.routeName: (ctx) => ProfileScreen(),
+          SurveyScreen.routeName : (ctx) => SurveyScreen()
         },
       ),
     );

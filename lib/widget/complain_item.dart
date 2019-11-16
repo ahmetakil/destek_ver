@@ -60,7 +60,7 @@ class _ComplainItemState extends State<ComplainItem> {
                       ],
                     ),
                   ),
-                  Text(DateFormat.yMd().format(comp.dateTime)),
+                  Text(DateFormat('dd/MM/yyyy').format(comp.dateTime)),
                 ],
               ),
             ),
@@ -88,18 +88,20 @@ class _ComplainItemState extends State<ComplainItem> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            if (comp.upVote > 0) {
+                            if (comp.upvoted) {
                               comp.upVote--;
+                              comp.upvoted = false;
                             } else {
                               comp.upVote++;
+                              comp.upvoted = true;
                             }
                           });
                         },
                         child: Row(
                           children: <Widget>[
-                            comp.upVote > 0
-                                ? Icon(Icons.arrow_upward, color: Colors.blue)
-                                : Icon(Icons.arrow_upward),
+                            comp.upvoted
+                                ? Icon(Icons.check, color: Colors.green)
+                                : Icon(Icons.check),
                             Text(comp.upVote.toString()),
                           ],
                         ),

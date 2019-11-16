@@ -54,11 +54,11 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    List<Complain> complains = Provider.of<ComplainsProvider>(context).complains;
+    List<Complain> complains = Provider.of<ComplainsProvider>(context).allComplains;
     final Complain complainProfile = ModalRoute.of(context).settings.arguments;
     List<Complain> personsComplains = complains.where((comp) {
       return identical(
-        comp.name,
+        comp.name.toLowerCase(),
         complainProfile == null ? "fatih emin öge" : complainProfile.name,
       );
     }).toList();
