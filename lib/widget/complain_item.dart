@@ -1,4 +1,3 @@
-import 'package:demo_app1/util/location_util.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -56,7 +55,7 @@ class _ComplainItemState extends State<ComplainItem> {
                         SizedBox(
                           width: 10,
                         ),
-                        Text("Ahmet A."),
+                        Text(comp.name),
                       ],
                     ),
                   ),
@@ -69,12 +68,23 @@ class _ComplainItemState extends State<ComplainItem> {
               child: Container(
                 height: 100,
                 width: 300,
-                child: Text(
-                  comp.complainMessage,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      comp.complainTopic,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      comp.complain,
+                    )
+                  ],
                 ),
               ),
             ),

@@ -13,7 +13,7 @@ class NewComplain extends StatefulWidget {
 }
 
 class _NewComplainState extends State<NewComplain> {
-  final _nameController = TextEditingController();
+  final _complainTopicController = TextEditingController();
   final _complainController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
@@ -24,10 +24,10 @@ class _NewComplainState extends State<NewComplain> {
 
     LatLng loc = Provider.of<LocationProvider>(context).location;
 
-
     Provider.of<ComplainsProvider>(context, listen: false).addNewComplain(
-      name: _nameController.text,
-      complainMessage: _complainController.text,
+      name: 'Ahmet Akıl',
+      complainTopic: _complainTopicController.text,
+      complain: _complainController.text,
       location: loc,
       date: DateTime.now(),
     );
@@ -65,7 +65,7 @@ class _NewComplainState extends State<NewComplain> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
                       ),
-                      controller: _nameController,
+                      controller: _complainTopicController,
                     ),
                     SizedBox(height: 30),
                     TextFormField(

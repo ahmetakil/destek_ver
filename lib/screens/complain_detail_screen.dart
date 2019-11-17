@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
+import '../widget/complain_detail_screen_item.dart';
 import '../models/complain.dart';
 
 class ComplainDetailScreen extends StatelessWidget {
@@ -11,95 +11,12 @@ class ComplainDetailScreen extends StatelessWidget {
     final Complain comp = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'DestekVer',
-          style: TextStyle(color: Colors.white),
+        appBar: AppBar(
+          title: Text(
+            'DestekVer',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
-      ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.account_circle,
-                      size: 50,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      comp.name,
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                Text(
-                  DateFormat.yMd().format(comp.dateTime),
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Divider(
-            thickness: 2,
-            color: Colors.black,
-          ),
-          SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.all(10),
-              alignment: Alignment.topLeft,
-              height: 450,
-              child: Text(
-                comp.complainMessage,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          Divider(
-            thickness: 2,
-            color: Colors.black,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  comp.upVote > 0
-                      ? Icon(Icons.arrow_upward, color: Colors.blue)
-                      : Icon(Icons.arrow_upward),
-                  Text(
-                    comp.upVote.toString(),
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                ],
-              ),
-              Text(
-                "LOCATION",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
+        body: ComplainDetailScreenItem(comp));
   }
 }

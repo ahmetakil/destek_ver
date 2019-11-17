@@ -3,10 +3,11 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Complain {
   final String name;
-  final String complainMessage;
+  final String complainTopic;
+  final String complain;
   final DateTime dateTime;
   final LatLng location;
-  final String address;
+  String address;
   int upVote;
   bool upvoted;
   bool replied;
@@ -14,7 +15,8 @@ class Complain {
 
   Complain({
     @required this.name,
-    @required this.complainMessage,
+    @required this.complainTopic,
+    @required this.complain,
     @required this.dateTime,
     @required this.location,
     this.address,

@@ -4,8 +4,10 @@ import 'package:demo_app1/util/location_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:geolocator/geolocator.dart';
 
 class LocationInput extends StatefulWidget {
+  static String address;
   @override
   _LocationInputState createState() => _LocationInputState();
 }
@@ -14,8 +16,7 @@ class _LocationInputState extends State<LocationInput> {
   String _imgPreviewUrl;
   LatLng _location;
 
-  void loadInitialLoc() async{
-
+  void loadInitialLoc() async {
     _location = await LocationUtil.getCurrentLocation();
     _imgPreviewUrl = await LocationUtil.generateLocImage(_location);
   }
@@ -27,31 +28,37 @@ class _LocationInputState extends State<LocationInput> {
   }
 
   void loadImageUrl() async {
-    final locData = await LocationUtil.getCurrentLocation();
-    _location = LatLng(locData.latitude, locData.longitude);
+    Position position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    List<Placemark> placemark = await Geolocator()
+        .placemarkFromCoordinates(position.latitude, position.longitude);
+
+    LocationInput.address =
+        '${placemark[0].subLocality } mah. ${placemark[0].subAdministrativeArea}/${placemark[0].administrativeArea}';
+
+    _location = LatLng(position.latitude, position.longitude);
     String url = await LocationUtil.generateLocImage(_location);
     setState(() {
       _imgPreviewUrl = url;
     });
-    Provider.of<LocationProvider>(context,listen: false).location = _location;
+    Provider.of<LocationProvider>(context, listen: false).location = _location;
   }
 
   Future<void> selectOnMap() async {
     final locData = await LocationUtil.getCurrentLocation();
     _location = LatLng(locData.latitude, locData.longitude);
-    final LatLng selected = await Navigator.of(context)
-        .push(
-          MaterialPageRoute(
-            fullscreenDialog: true,
-            builder: (_) => MapScreen(_location, true),
-          ),
-        );
+    final LatLng selected = await Navigator.of(context).push(
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (_) => MapScreen(_location, true),
+      ),
+    );
     _location = selected != null ? selected : _location;
     final url = await LocationUtil.generateLocImage(_location);
     setState(() {
       _imgPreviewUrl = url;
     });
-    Provider.of<LocationProvider>(context,listen: false).location = _location;
+    Provider.of<LocationProvider>(context, listen: false).location = _location;
   }
 
   @override
@@ -88,11 +95,17 @@ class _LocationInputState extends State<LocationInput> {
             FlatButton.icon(
                 onPressed: loadImageUrl,
                 icon: Icon(Icons.location_on),
-                label: Text("Mevcut Konumum")),
+                label: Text(
+                  "Mevcut Konumum",
+                  style: TextStyle(fontSize: 12),
+                )),
             FlatButton.icon(
                 onPressed: selectOnMap,
                 icon: Icon(Icons.map),
-                label: Text("Haritadan Seç")),
+                label: Text(
+                  "Haritadan Seç",
+                  style: TextStyle(fontSize: 12),
+                )),
           ],
         )
       ],

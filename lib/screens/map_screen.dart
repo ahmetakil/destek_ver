@@ -1,7 +1,5 @@
-import 'package:demo_app1/util/location_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
 
 class MapScreen extends StatefulWidget {
   @override
