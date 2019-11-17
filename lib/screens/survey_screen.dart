@@ -1,6 +1,6 @@
-import 'package:demo_app1/models/question_answer.dart';
 import 'package:demo_app1/widget/survey_item.dart';
 import 'package:flutter/material.dart';
+import '../data/dummy_data.dart';
 
 class SurveyScreen extends StatefulWidget {
   static const routeName = '/surveyScreen';
@@ -10,28 +10,30 @@ class SurveyScreen extends StatefulWidget {
 }
 
 class _SurveyScreenState extends State<SurveyScreen> {
-  String question = "aaaaaa";
-  List<QuestionAnswer> answers = [
-    QuestionAnswer(
-        imageUrl:
-            'https://iasbh.tmgrup.com.tr/7fa563/800/420/0/0/660/345?u=https://isbh.tmgrup.com.tr/sbh/2018/09/29/istanbulda-kosu-yapilacak-en-iyi-yerler-istanbul-kosu-parkuru-yerleri-1538207897481.jpg',
-        selected: false,
-        choice: 'A)'),
-    QuestionAnswer(
-        imageUrl:
-            'https://iasbh.tmgrup.com.tr/7fa563/800/420/0/0/660/345?u=https://isbh.tmgrup.com.tr/sbh/2018/09/29/istanbulda-kosu-yapilacak-en-iyi-yerler-istanbul-kosu-parkuru-yerleri-1538207897481.jpg',
-        selected: false,
-        choice: 'B)'),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final int typeOfSurvey = ModalRoute.of(context).settings.arguments as int;
+    String survey = SURVEY_TYPES[typeOfSurvey];
+    List<String> questions = QUESTIONS[survey];
     return Scaffold(
       appBar: AppBar(
         title: Text('DestekVar'),
       ),
-      body: SingleChildScrollView(
-        child: SurveyItem(question, answers),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return Column(
+            children: <Widget>[
+              SurveyItem(
+                questions[index],
+                ANSWERS[questions[index]],
+              ),
+              SizedBox(
+                height: 15,
+              )
+            ],
+          );
+        },
+        itemCount: questions.length,
       ),
     );
   }
