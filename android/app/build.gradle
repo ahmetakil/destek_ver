@@ -59,6 +59,17 @@ flutter {
     source '../..'
 }
 
+subprojects {
+    project.configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'androidx.core' &&
+                    !details.requested.name.contains('androidx')) {
+                details.useVersion "1.0.1"
+            }
+        }
+    }
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'

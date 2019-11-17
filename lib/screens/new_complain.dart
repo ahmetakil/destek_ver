@@ -1,6 +1,8 @@
 import 'package:demo_app1/provider/complains_provider.dart';
+import 'package:demo_app1/provider/location_provider.dart';
 import 'package:demo_app1/widget/location_input.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class NewComplain extends StatefulWidget {
@@ -13,7 +15,6 @@ class NewComplain extends StatefulWidget {
 class _NewComplainState extends State<NewComplain> {
   final _nameController = TextEditingController();
   final _complainController = TextEditingController();
-  final _locationController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   void _submitData() {
@@ -21,12 +22,15 @@ class _NewComplainState extends State<NewComplain> {
       return;
     }
 
+    LatLng loc = Provider.of<LocationProvider>(context).location;
+
+
     Provider.of<ComplainsProvider>(context, listen: false).addNewComplain(
-        _nameController.text,
-        _complainController.text,
-        _locationController.text,
-        DateTime.now(),
-        0);
+      name: _nameController.text,
+      complainMessage: _complainController.text,
+      location: loc,
+      date: DateTime.now(),
+    );
 
     Navigator.of(context).pop();
   }
@@ -49,9 +53,9 @@ class _NewComplainState extends State<NewComplain> {
                     TextFormField(
                       validator: (String value) {
                         if (value.isEmpty) {
-                          return "Lütfen Isminizi Girin";
+                          return "Lütfen Konuyu Belirtin";
                         } else if (value.length < 3) {
-                          return "Isminiz en az 4 karakter olmalıdır";
+                          return "Konu en az 4 karakter olmalıdır";
                         } else {
                           return null;
                         }
@@ -108,5 +112,3 @@ class _NewComplainState extends State<NewComplain> {
     );
   }
 }
-
-

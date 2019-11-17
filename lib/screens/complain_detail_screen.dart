@@ -61,7 +61,7 @@ class ComplainDetailScreen extends StatelessWidget {
               alignment: Alignment.topLeft,
               height: 450,
               child: Text(
-                comp.complain,
+                comp.complainMessage,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -90,7 +90,7 @@ class ComplainDetailScreen extends StatelessWidget {
                 ],
               ),
               Text(
-                comp.location,
+                "LOCATION",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

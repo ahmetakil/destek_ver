@@ -1,41 +1,34 @@
 import 'package:demo_app1/models/complain.dart';
+import 'package:demo_app1/util/location_util.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ComplainsProvider with ChangeNotifier {
   List<Complain> _complains = [
     Complain(
       name: 'Fatih Emin Öge',
-      complain: 'Kuyu\'ya Düştüm',
-      location: 'Kadıköy',
+      complainMessage: 'Kuyu\'ya Düştüm',
+      location: LatLng(40.990307, 29.0298),
+      address: "Kadiköy Boğa heykeli",
+      dateTime: DateTime.now(),
       upVote: 7,
-    ),
-    Complain(
-      name: 'Fatih Emin Öge',
-      complain: 'Kuyu\'ya Düştüm',
-      location: 'Üsküdar',
-      upVote: 15,
-      replied: true,
-      solved: false
-    ),
-    Complain(
-      name: 'Fatih Emin Öge',
-      complain: 'Kuyu\'ya Düştüm',
-      location: 'Maltepe',
-      upVote: 22,
-      replied: true,
-      solved: true
     ),
   ];
 
-  void addNewComplain(String name, String complain, String location,
-      DateTime date, int upVote) {
+  void addNewComplain({
+    String name,
+    String complainMessage,
+    LatLng location,
+    DateTime date,
+  }) async {
     final newComp = Complain(
       name: name,
-      complain: complain,
+      complainMessage: complainMessage,
+      dateTime: date,
       location: location,
-      upVote: upVote,
+      address: await LocationUtil.getAddress(location),
     );
-    _complains.add(newComp);
+    _complains.insert(0,newComp);
     notifyListeners();
   }
 

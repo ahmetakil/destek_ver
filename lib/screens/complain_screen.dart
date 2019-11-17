@@ -80,18 +80,18 @@ class ComplainScreen extends StatelessWidget {
                           child: Icon(
                             Icons.add,
                             color: Colors.white,
-                            size: 32,
+                            size: 28,
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(right: 12),
+                          margin: EdgeInsets.only(right: 10),
                           child: Text(
                             "Şikayet Ekle",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 18),
+                                fontSize: 15),
                           ),
                         )
                       ],

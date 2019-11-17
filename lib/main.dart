@@ -1,3 +1,4 @@
+import 'package:demo_app1/provider/location_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,8 +21,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      builder: (_) => ComplainsProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          builder: (_) => ComplainsProvider(),
+        ),
+        ChangeNotifierProvider(
+          builder: (_) => LocationProvider(),
+        )
+      ],
       child: MaterialApp(
         title: 'Destek Ver',
         debugShowCheckedModeBanner: false,

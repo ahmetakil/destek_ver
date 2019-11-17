@@ -1,3 +1,4 @@
+import 'package:demo_app1/util/location_util.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -15,7 +16,6 @@ class ComplainItem extends StatefulWidget {
 }
 
 class _ComplainItemState extends State<ComplainItem> {
-
   void selectComp(BuildContext context) {
     Navigator.of(context).pushNamed(
       ComplainDetailScreen.routeName,
@@ -56,7 +56,7 @@ class _ComplainItemState extends State<ComplainItem> {
                         SizedBox(
                           width: 10,
                         ),
-                        Text(comp.name),
+                        Text("Ahmet A."),
                       ],
                     ),
                   ),
@@ -70,7 +70,7 @@ class _ComplainItemState extends State<ComplainItem> {
                 height: 100,
                 width: 300,
                 child: Text(
-                  comp.complain,
+                  comp.complainMessage,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -107,11 +107,22 @@ class _ComplainItemState extends State<ComplainItem> {
                         ),
                       ),
                       SizedBox(
-                        width: 5,
-                      ),
+                        width: 10,
+                      )
                     ],
                   ),
-                  Text(comp.location)
+                  Container(
+                    child: Flexible(
+                      fit: FlexFit.tight,
+                      flex: 1,
+                      child: Text(
+                        comp.address,
+                        textAlign: TextAlign.right,
+                        softWrap: true,
+                        overflow: TextOverflow.fade,
+                      ),
+                    ),
+                  )
                 ],
               ),
             )
