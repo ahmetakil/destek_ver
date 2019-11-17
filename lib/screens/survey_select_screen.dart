@@ -1,5 +1,6 @@
-import 'package:demo_app1/screens/survey_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/survey_screen.dart';
 
 class SurveySelectScreen extends StatelessWidget {
   final List<String> surveys = [
@@ -16,22 +17,26 @@ class SurveySelectScreen extends StatelessWidget {
           height: 20,
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(SurveyScreen.routeName);
+          },
           child: Container(
-            margin: EdgeInsets.all(10),
-            alignment: Alignment.topLeft,
+            height: 45,
+            margin: const EdgeInsets.all(10),
+            alignment: Alignment.centerLeft,
             width: 300,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: Colors.green,
             ),
-            child: FlatButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(
-                  SurveyScreen.routeName
-                );
-              },
-              child: Text(surveys[0]),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                surveys[0],
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ),
@@ -39,18 +44,28 @@ class SurveySelectScreen extends StatelessWidget {
           height: 20,
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              SurveyScreen.routeName,
+            );
+          },
           child: Container(
-            margin: EdgeInsets.all(10),
-            alignment: Alignment.topLeft,
+            height: 45,
+            margin: const EdgeInsets.all(10),
+            alignment: Alignment.centerLeft,
             width: 300,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: Colors.green,
             ),
-            child: FlatButton(
-              onPressed: () {},
-              child: Text(surveys[1]),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                surveys[1],
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ),
