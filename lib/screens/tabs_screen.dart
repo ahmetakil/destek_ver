@@ -1,8 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:demo_app1/screens/new_complain.dart';
-import 'package:demo_app1/screens/suggestions_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/suggestions_screen.dart';
+import '../screens/new_complain.dart';
 import '../screens/complain_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/survey_select_screen.dart';

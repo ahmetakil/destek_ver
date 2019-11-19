@@ -6,6 +6,7 @@ class QuestionAnswer {
   final bool image;
   final bool button;
   final bool star;
+  bool multipleChoice;
   double rating;
   String inputFromUser;
   bool selected;
@@ -20,5 +21,6 @@ class QuestionAnswer {
     this.star = false,
     this.inputFromUser,
     this.selected = false,
+    this.multipleChoice = false,
   });
 }

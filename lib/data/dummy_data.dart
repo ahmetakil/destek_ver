@@ -10,7 +10,7 @@ const Map<String, List<String>> QUESTIONS = {
     'Aşağıda bulunan hangi park konseptini seçersiniz?',
     'İlçenizdeki sıklıkla gittiğiniz parka ne kadar sürede ulaşım sağlıyorsunuz?',
     'Sık gittiğiniz parkın adını ve mahallesini yazar mısınız?',
-    'Yeni yapılan bir parkta farklı olarak aşağıdakilerden hangisini görmek isterdiniz?',
+    'Sıklıkla gittiğiniz parkın size göre en büyük sorunları işaretleyiniz. ',
   ],
   'Sokak Hayvanları': [
     'Yaşadığınız mahalledeki sokak hayvanlarından ne kadar rahatsızsınız?',
@@ -72,71 +72,68 @@ Map<String, List<QuestionAnswer>> ANSWERS = {
       input: true,
     )
   ],
-  'Yeni yapılan bir parkta farklı olarak aşağıdakilerden hangisini görmek isterdiniz?':
-      [
+  'Sıklıkla gittiğiniz parkın size göre en büyük sorunları işaretleyiniz. ': [
     QuestionAnswer(
       imageUrl:
-          'https://lh3.googleusercontent.com/5Ic6Zvzp1PSfYfUG98T7Gf6v92snk_9WYM3c5ZPj1iotXE2qR4clHYNf0Q732G9KO_0b=s153',
+          'https://www.haberankara.com/images/haberler/2016/09/ankara-ya-yakismiyor-cocuk-parki-demeye-bin-sahit.jpg',
       selected: false,
-      answer: 'Kırık oyuncaklar',
+      answer: 'Kırık Oyuncaklar',
       image: true,
       choice: 'A)',
+      multipleChoice: true,
     ),
     QuestionAnswer(
       imageUrl:
-          'https://www.google.com.tr/search?sa=G&hl=tr&sxsrf=ACYBGNQDHzSVAQtPjKVqMjFsPF3PKX1DRg:1573988372093&q=%E3%83%9A%E3%83%83%E3%83%88+%E3%83%9E%E3%83%8A%E3%83%BC+%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88&tbm=isch&tbs=simg:CAQSkwEJYMNl7YkwekIahwELEKjU2AQaAAwLELCMpwgaYgpgCAMSKOkTgRSaA8IImwP6CesTngbAFLwH8j2oNJg1lSTxPa80jyyXNbY0pzQaMFMbwvpL2fIyW9NFtXk7O5o4-XFkeB5eGwqyUimoRkeVcvkpuy6ZTpRdUoXZsWox6SAEDAsQjq7-CBoKCggIARIETScmaAw&ved=0ahUKEwidhLLOi_HlAhWnwsQBHasqADwQwg4ILSgA',
+          'https://previews.123rf.com/images/arcady31/arcady311706/arcady31170600050/80089514-dog-pooping-vector-symbol.jpg',
       selected: false,
-      answer: 'Evcil hayvan dışkısı',
+      answer: 'Evcil Hayvan Dışkısı',
       image: true,
       choice: 'B)',
+      multipleChoice: true,
     ),
     QuestionAnswer(
       imageUrl:
-          'https://www.google.com.tr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwjtxrfli_HlAhVKbVAKHRmOBKgQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.sondakikahaberleri.info.tr%2Fasgari-ucret%2F6&psig=AOvVaw3RupjHBvoJ5N0zJXFcS10r&ust=1574074818411623',
+          'https://www.aydinlik.com.tr/_usr/files/img/2018032612363519_imll700d3m044anbd8h6otbde31.jpg',
       selected: false,
       answer: 'Sosyal Güvenlik Eksikliği',
       image: true,
       choice: 'C)',
+      multipleChoice: true,
     ),
     QuestionAnswer(
       imageUrl:
-          'https://www.google.com.tr/search?sa=G&hl=tr&sxsrf=ACYBGNRNRMKpgyMiVVAbNnIDYkyuWOBaOw:1573988656798&q=grove&tbm=isch&tbs=simg:CAQSkwEJqblLdGhC4UoahwELEKjU2AQaAAwLELCMpwgaYgpgCAMSKKoV_1wrdFckVwxXeFfoK1BW6FYMehjmIP_1Y59DmMP6kq9znrPpA_11jcaMOX0bjRSXKjHXd_17k5FxIBN9MTOcYN3u07kQ62AL5Oa_1twdHKnPXKizDQqQWLGnG1CAEDAsQjq7-CBoKCggIARIEACynFQw&ved=0ahUKEwi2hpPWjPHlAhUD5aYKHUxeBa8Qwg4ILSgA&biw=648&bih=639',
+          'http://www.yarin11.com/images/upload/image/2016%20Mart/pispark%204.png',
       selected: false,
       answer: 'Genel Temizlik',
       image: true,
       choice: 'D)',
+      multipleChoice: true,
     ),
     QuestionAnswer(
       imageUrl:
-          'https://lh3.googleusercontent.com/MIiWU7Aqb1FmYp-SIbz9S_OTTnSTcpMkgNzspvbefhtvsyF3gyKvBk5AQRxBoU3jdHcRxQ=s128',
+          'https://blog.gittigidiyor.com/wp-content/uploads/sites/13/2017/07/yaz-bahce-bakimi-gittigidiyor-blog-1.jpg',
       selected: false,
-      answer: 'Bahçe, bitki bakımı',
+      answer: 'Bahçe, Bitki Bakımı',
       image: true,
       choice: 'F)',
+      multipleChoice: true,
     ),
     QuestionAnswer(
-      imageUrl:
-          'https://lh3.googleusercontent.com/MIiWU7Aqb1FmYp-SIbz9S_OTTnSTcpMkgNzspvbefhtvsyF3gyKvBk5AQRxBoU3jdHcRxQ=s128',
+      imageUrl: 'https://www.as3ahsap.com/img/urunler/kamelya-as612-0.jpg',
       selected: false,
-      answer: 'Bahçe, bitki bakımı',
+      answer: 'Oturacak Alan Eksikliği',
       image: true,
       choice: 'G)',
+      multipleChoice: true,
     ),
     QuestionAnswer(
       imageUrl:
-          'https://www.google.com.tr/search?sa=G&hl=tr&sxsrf=ACYBGNQcUDnBI504BYhxlsoodvYggmR-Qw:1573988775820&q=%C3%A7ardak+modelleri&tbm=isch&tbs=simg:CAQSkwEJ5I6vsQtXyfkahwELEKjU2AQaAAwLELCMpwgaYgpgCAMSKOkK_1wP3FPYU3RTzFLsK0BboCvQUwyrCKvgqizmCOcYq_1TjRKfQq8yoaMCAZnp6rP116R1LTJ-nt2IZYavOhz23OaG5bJYqkciEeRzMNcX-X9jxCxvR_1wz0zFSAEDAsQjq7-CBoKCggIARIEwV_1Lwww&ved=0ahUKEwj5wPOOjfHlAhXvwcQBHexwBbMQwg4ILSgA',
+          'https://fazzlamesai.files.wordpress.com/2017/06/28062017-4.jpg',
       selected: false,
-      answer: 'Oturacak alan eksikliği',
+      answer: 'Yetişkinlere Yönelik Bozuk Egzersiz Aletleri',
       image: true,
       choice: 'H)',
-    ),
-    QuestionAnswer(
-      imageUrl:
-          'https://lh3.googleusercontent.com/eDd7Yh111WB9577Dh_Som7JuWINUw_Ih82TRHMQ_SX8o1kwLvJO5D9xYMSIrgaRESisAnA=s128',
-      selected: false,
-      answer: 'Yetişkinlere yönelik bozuk egzersiz aletleri',
-      image: true,
-      choice: 'I)',
+      multipleChoice: true,
     ),
   ],
   // 'Yeni yapılan bir parkta farklı olarak aşağıdakilerden hangisini görmek isterdiniz?':

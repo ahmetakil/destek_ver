@@ -1,6 +1,5 @@
 import 'package:demo_app1/models/complain.dart';
 import 'package:demo_app1/util/location_util.dart';
-import 'package:demo_app1/widget/location_input.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 

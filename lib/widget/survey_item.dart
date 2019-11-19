@@ -89,23 +89,28 @@ class _SurveyItemState extends State<SurveyItem> {
 
   Widget buildButtonWithImages(List<QuestionAnswer> questionAnswers) {
     return Container(
-      height: questionAnswers.length * 80.0,
+      height: questionAnswers[0].answer == null
+          ? questionAnswers.length * 80.0
+          : questionAnswers.length * 225.0,
       child: Wrap(
         alignment: WrapAlignment.center,
         children: questionAnswers.map((answer) {
           return Container(
-            height: 100,
-            width: 140,
+            height: answer.answer == null ? 100 : 200,
+            width: answer.answer == null ? 140 : double.infinity,
             margin: EdgeInsets.all(10),
             child: InkWell(
               borderRadius: BorderRadius.circular(15),
               onTap: () {
                 setState(() {
-                  for (int i = 0; i < questionAnswers.length; i++) {
-                    if (answer != questionAnswers[i]) {
-                      questionAnswers[i].selected = false;
+                  if (!answer.multipleChoice) {
+                    for (int i = 0; i < questionAnswers.length; i++) {
+                      if (answer != questionAnswers[i]) {
+                        questionAnswers[i].selected = false;
+                      }
                     }
                   }
+
                   answer.selected = !answer.selected;
                 });
               },
@@ -128,9 +133,11 @@ class _SurveyItemState extends State<SurveyItem> {
                   header: GridTileBar(
                     backgroundColor: Colors.black45,
                     leading: Text(
-                      '${answer.choice}  ${answer.answer == null ? "" : questionAnswers[0].answer}',
+                      '${answer.choice}  ${answer.answer == null ? "" : answer.answer}',
                       style: TextStyle(
-                          color: answer.selected ? Colors.red : Colors.white),
+                        color: answer.selected ? Colors.red : Colors.white,
+                        fontSize: 13,
+                      ),
                     ),
                   ),
                 ),

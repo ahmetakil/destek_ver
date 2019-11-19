@@ -1,4 +1,3 @@
-import 'package:demo_app1/widget/location_input.dart';
 import 'package:geolocator/geolocator.dart' as GEO;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
@@ -15,16 +14,12 @@ class LocationUtil {
   }
 
   static Future<String> generateLocImage(LatLng locData) async {
-    return "https://maps.googleapis.com/maps/api/staticmap?center=${locData
-        .latitude},${locData
-        .longitude}&size=600x300&zoom=16&markers=color:red%7Alabel:C%7C${locData
-        .latitude},${locData.longitude}&key=$API_KEY";
+    return "https://maps.googleapis.com/maps/api/staticmap?center=${locData.latitude},${locData.longitude}&size=600x300&zoom=16&markers=color:red%7Alabel:C%7C${locData.latitude},${locData.longitude}&key=$API_KEY";
   }
 
   static Future<String> getAddress(LatLng locData) async {
     final url =
-        "https://maps.googleapis.com/maps/api/geocode/json?latlng=${locData
-        .latitude},${locData.longitude}&key=$API_KEY";
+        "https://maps.googleapis.com/maps/api/geocode/json?latlng=${locData.latitude},${locData.longitude}&key=$API_KEY";
 
     final res = await http.get(url);
     print(res.body);
@@ -37,9 +32,6 @@ class LocationUtil {
     List<GEO.Placemark> placemark = await GEO.Geolocator()
         .placemarkFromCoordinates(position.latitude, position.longitude);
 
-    return
-      '${placemark[0].subLocality} mah. ${placemark[0]
-          .subAdministrativeArea}/${placemark[0].administrativeArea}';
-
+    return '${placemark[0].subLocality} mah. ${placemark[0].subAdministrativeArea}/${placemark[0].administrativeArea}';
   }
 }

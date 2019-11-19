@@ -32,8 +32,6 @@ class _NewComplainState extends State<NewComplain> {
       location: loc,
       date: DateTime.now(),
     );
-
-    Navigator.of(context).pop();
   }
 
   @override
