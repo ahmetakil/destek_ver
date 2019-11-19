@@ -1,7 +1,6 @@
-import 'package:demo_app1/provider/complains_provider.dart';
-import 'package:demo_app1/provider/location_provider.dart';
-import 'package:demo_app1/util/location_util.dart';
-import 'package:demo_app1/widget/location_input.dart';
+import 'package:DestekVer/provider/complains_provider.dart';
+import 'package:DestekVer/provider/location_provider.dart';
+import 'package:DestekVer/widget/location_input.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +31,7 @@ class _NewComplainState extends State<NewComplain> {
       location: loc,
       date: DateTime.now(),
     );
+    Navigator.of(context).pushReplacementNamed('/');
   }
 
   @override
@@ -41,7 +41,6 @@ class _NewComplainState extends State<NewComplain> {
         backgroundColor: Colors.green,
         child: Icon(Icons.check),
         onPressed: _submitData,
-
       ),
       body: Column(
         children: <Widget>[

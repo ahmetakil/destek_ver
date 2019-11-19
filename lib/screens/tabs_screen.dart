@@ -8,7 +8,6 @@ import '../screens/profile_screen.dart';
 import '../screens/survey_select_screen.dart';
 
 class TabsScreen extends StatefulWidget {
-
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
@@ -26,7 +25,7 @@ class _TabsScreenState extends State<TabsScreen> {
     ProfileScreen()
   ];
 
-  Widget getBody(){
+  Widget getBody() {
     return _pages[_selectedPage];
   }
 

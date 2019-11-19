@@ -1,4 +1,4 @@
-import 'package:demo_app1/provider/location_provider.dart';
+import 'package:DestekVer/provider/location_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

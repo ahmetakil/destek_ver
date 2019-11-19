@@ -1,5 +1,5 @@
-import 'package:demo_app1/provider/complains_provider.dart';
-import 'package:demo_app1/widget/complain_item.dart';
+import 'package:DestekVer/provider/complains_provider.dart';
+import 'package:DestekVer/widget/complain_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

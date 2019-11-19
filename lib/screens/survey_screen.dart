@@ -1,5 +1,5 @@
-import 'package:demo_app1/models/question_answer.dart';
-import 'package:demo_app1/widget/survey_item.dart';
+import 'package:DestekVer/models/question_answer.dart';
+import 'package:DestekVer/widget/survey_item.dart';
 import 'package:flutter/material.dart';
 import '../data/dummy_data.dart';
 

@@ -1,6 +1,6 @@
-import 'package:demo_app1/provider/location_provider.dart';
-import 'package:demo_app1/screens/map_screen.dart';
-import 'package:demo_app1/util/location_util.dart';
+import 'package:DestekVer/provider/location_provider.dart';
+import 'package:DestekVer/screens/map_screen.dart';
+import 'package:DestekVer/util/location_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +27,6 @@ class _LocationInputState extends State<LocationInput> {
   }
 
   void loadImageUrl() async {
-
     this._location = await LocationUtil.getCurrentLocation();
 
     String url = await LocationUtil.generateLocImage(_location);
