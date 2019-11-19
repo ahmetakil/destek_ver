@@ -7,7 +7,8 @@ class Complain {
   final String complain;
   final DateTime dateTime;
   final LatLng location;
-  String address;
+  String fullAddress;
+  String shortAddress;
   int upVote;
   bool upvoted;
   bool replied;
@@ -19,7 +20,8 @@ class Complain {
     @required this.complain,
     @required this.dateTime,
     @required this.location,
-    this.address,
+    this.shortAddress,
+    this.fullAddress,
     this.upVote = 0,
     this.upvoted = false,
     this.replied = false,

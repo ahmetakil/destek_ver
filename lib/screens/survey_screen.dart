@@ -42,7 +42,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           findChoice();
-          Navigator.pop(context);
         },
         child: Icon(
           Icons.check,

@@ -128,11 +128,15 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                 ),
               ],
             ),
-            Text(
-              widget.comp.address,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+            Flexible(
+              child: Text(
+                widget.comp.fullAddress,
+                textAlign: TextAlign.right,
+                softWrap: true,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             )
           ],

@@ -4,7 +4,6 @@ import 'package:demo_app1/util/location_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:geolocator/geolocator.dart';
 
 class LocationInput extends StatefulWidget {
   static String address;
@@ -28,15 +27,9 @@ class _LocationInputState extends State<LocationInput> {
   }
 
   void loadImageUrl() async {
-    Position position = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    List<Placemark> placemark = await Geolocator()
-        .placemarkFromCoordinates(position.latitude, position.longitude);
 
-    LocationInput.address =
-        '${placemark[0].subLocality } mah. ${placemark[0].subAdministrativeArea}/${placemark[0].administrativeArea}';
+    this._location = await LocationUtil.getCurrentLocation();
 
-    _location = LatLng(position.latitude, position.longitude);
     String url = await LocationUtil.generateLocImage(_location);
     setState(() {
       _imgPreviewUrl = url;

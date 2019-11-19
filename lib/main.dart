@@ -52,15 +52,11 @@ class _MyAppState extends State<MyApp> {
 /*
 TODO:
   1- Profilde son şikayetler
-  2- Gerçek konum ekleme isterse elle veya otomatik ++
   3- Gönderilecek birim (büyükşehir veya küçükşehir) --
-  4- Fake şikayet türleri -> [Tüm şikayetler-{Cevaplanan ve çözülen},Cevaplanan,Çözülen] ++
-  5- Anket sekmesi ++
   6- Öneri sekmesi -
   7- Konuya, konuma göre filtreleme ++
 
   - şikayete medya ekleme [Resim-Video]
-  - konu eklenebilir
 
 
   == Ad-Soyad yerine Konu gelicek isim profilden çekilicek
@@ -71,7 +67,6 @@ TODO:
 https://medium.com/better-programming/flutter-tabbar-with-buttons-as-tabs-ios-style-4dff5ae6c055
 
 HAFTAYA:
-  - KONUM
   - ANKET
    - ŞİKAYET TÜRLER
 

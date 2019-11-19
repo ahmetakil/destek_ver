@@ -1,5 +1,6 @@
 import 'package:demo_app1/provider/complains_provider.dart';
 import 'package:demo_app1/provider/location_provider.dart';
+import 'package:demo_app1/util/location_util.dart';
 import 'package:demo_app1/widget/location_input.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -38,8 +39,11 @@ class _NewComplainState extends State<NewComplain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Şikayet Ekle'),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
+        child: Icon(Icons.check),
+        onPressed: _submitData,
+
       ),
       body: Column(
         children: <Widget>[
@@ -94,19 +98,6 @@ class _NewComplainState extends State<NewComplain> {
               ),
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: 80,
-            child: RaisedButton(
-              child: Text(
-                'Şikayet Ekle',
-                style: TextStyle(fontSize: 22),
-              ),
-              textColor: Colors.white,
-              color: Theme.of(context).primaryColor,
-              onPressed: _submitData,
-            ),
-          )
         ],
       ),
     );

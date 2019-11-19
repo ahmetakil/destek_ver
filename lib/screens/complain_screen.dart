@@ -48,7 +48,7 @@ class ComplainScreen extends StatelessWidget {
           tabs: <Widget>[
             Tab(text: 'Tüm Şikayetler'),
             Tab(text: 'Cevaplananlar'),
-            Tab(text: 'Çözülenler')
+            Tab(text: 'Çözülenler'),
           ],
         ),
         body: Stack(
@@ -59,46 +59,6 @@ class ComplainScreen extends StatelessWidget {
                 ComplainList(1),
                 ComplainList(2),
               ],
-            ),
-            Positioned(
-              right: -20,
-              bottom: 10,
-              child: InkWell(
-                onTap: () =>
-                    Navigator.of(context).pushNamed(NewComplain.routeName),
-                child: Container(
-                  width: 100,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Colors.green),
-                  child: Padding(
-                    padding: const EdgeInsets.all(6.0),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(right: 10),
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 28,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: 10),
-                          child: Text(
-                            "Şikayet Ekle",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
             ),
           ],
         ),

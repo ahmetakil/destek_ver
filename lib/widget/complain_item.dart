@@ -79,7 +79,7 @@ class _ComplainItemState extends State<ComplainItem> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 13,
                     ),
                     Text(
                       comp.complain,
@@ -126,7 +126,7 @@ class _ComplainItemState extends State<ComplainItem> {
                       fit: FlexFit.tight,
                       flex: 1,
                       child: Text(
-                        comp.address,
+                        comp.shortAddress??"NULL",
                         textAlign: TextAlign.right,
                         softWrap: true,
                         overflow: TextOverflow.fade,
