@@ -50,18 +50,21 @@ Map<String, List<QuestionAnswer>> ANSWERS = {
       choice: 'A)',
       selected: false,
       button: true,
+      image: false,
     ),
     QuestionAnswer(
       answer: '10-20  dk ',
       choice: 'B)',
       selected: false,
       button: true,
+      image: false,
     ),
     QuestionAnswer(
       answer: '20-40  dk ',
       choice: 'C)',
       selected: false,
       button: true,
+      image: false,
     ),
   ],
   'Sık gittiğiniz parkın adını ve mahallesini yazar mısınız?': [
@@ -136,35 +139,35 @@ Map<String, List<QuestionAnswer>> ANSWERS = {
       choice: 'I)',
     ),
   ],
-  'Yeni yapılan bir parkta farklı olarak aşağıdakilerden hangisini görmek isterdiniz?':
-      [
-    QuestionAnswer(
-      answer:
-          'Tırmanma duvarı, fiziksel hareket parkurları gibi çocuklara yönelik yeni oyuncaklar',
-      button: true,
-      choice: 'A)',
-    ),
-    QuestionAnswer(
-      answer: 'Su gösterisi havuzları',
-      button: true,
-      choice: 'B)',
-    ),
-    QuestionAnswer(
-      answer: 'Yetişkinlere yönelik daha etkili egzersiz aletleri',
-      button: true,
-      choice: 'C)',
-    ),
-    QuestionAnswer(
-      answer: 'Kaykay, paten parkurları',
-      button: true,
-      choice: 'D)',
-    ),
-    QuestionAnswer(
-      answer: 'Mega satranç, canlı langırt, trambolin gibi eğlence alanları',
-      button: true,
-      choice: 'F)',
-    ),
-  ],
+  // 'Yeni yapılan bir parkta farklı olarak aşağıdakilerden hangisini görmek isterdiniz?':
+  //     [
+  //   QuestionAnswer(
+  //     answer:
+  //         'Tırmanma duvarı, fiziksel hareket parkurları gibi çocuklara yönelik yeni oyuncaklar',
+  //     button: true,
+  //     choice: 'A)',
+  //   ),
+  //   QuestionAnswer(
+  //     answer: 'Su gösterisi havuzları',
+  //     button: true,
+  //     choice: 'B)',
+  //   ),
+  //   QuestionAnswer(
+  //     answer: 'Yetişkinlere yönelik daha etkili egzersiz aletleri',
+  //     button: true,
+  //     choice: 'C)',
+  //   ),
+  //   QuestionAnswer(
+  //     answer: 'Kaykay, paten parkurları',
+  //     button: true,
+  //     choice: 'D)',
+  //   ),
+  //   QuestionAnswer(
+  //     answer: 'Mega satranç, canlı langırt, trambolin gibi eğlence alanları',
+  //     button: true,
+  //     choice: 'F)',
+  //   ),
+  // ],
   'Yaşadığınız mahalledeki sokak hayvanlarından ne kadar rahatsızsınız?': [
     QuestionAnswer(
       answer: '1:Çok Rahatsızım , 5:Hiç Rahatsız Değilim',

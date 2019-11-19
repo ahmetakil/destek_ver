@@ -18,8 +18,10 @@ class SurveySelectScreen extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Navigator.of(context)
-                .pushNamed(SurveyScreen.routeName, arguments: 0);
+            Navigator.of(context).pushNamed(
+              SurveyScreen.routeName,
+              arguments: 0,
+            );
           },
           child: Container(
             height: 45,
@@ -46,8 +48,10 @@ class SurveySelectScreen extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Navigator.of(context)
-                .pushNamed(SurveyScreen.routeName, arguments: 1);
+            Navigator.of(context).pushNamed(
+              SurveyScreen.routeName,
+              arguments: 1,
+            );
           },
           child: Container(
             height: 45,

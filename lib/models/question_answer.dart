@@ -6,6 +6,7 @@ class QuestionAnswer {
   final bool image;
   final bool button;
   final bool star;
+  double rating;
   String inputFromUser;
   bool selected;
 
