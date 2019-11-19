@@ -10,6 +10,7 @@ const API_KEY = "AIzaSyD915gwBSU971KjW52JegMbQgZBQB56TVQ";
 class LocationUtil {
   static Future<LatLng> getCurrentLocation() async {
     final locData = await Location().getLocation();
+
     return LatLng(locData.latitude, locData.longitude);
   }
 
