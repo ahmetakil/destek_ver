@@ -24,6 +24,8 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Albümünüze erişmek için izin istiyoruz</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Konumuzunu kullanmak için izin istiyoruz</string>
     <key>NSLocationAlwaysUsageDescription</key>
