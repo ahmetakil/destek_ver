@@ -25,7 +25,7 @@ class _NewComplainState extends State<NewComplain> {
     LatLng loc = Provider.of<LocationProvider>(context).location;
 
     Provider.of<ComplainsProvider>(context, listen: false).addNewComplain(
-      name: 'Ahmet Akıl',
+      username: 'Ahmet Akıl',
       complainTopic: _complainTopicController.text,
       complain: _complainController.text,
       location: loc,
@@ -75,11 +75,10 @@ class _NewComplainState extends State<NewComplain> {
                           return "Lütfen Şikayetinizi Girin";
                         } else if (value.length < 5) {
                           return "Şikayetiniz en az 6 karakter olmalıdır";
-                        } else if (value.length > 200) {
-                          return "Şikayetiniz en fazla 200 karakter olmalıdır";
                         }
                         return null;
                       },
+                      maxLength: 200,
                       decoration: InputDecoration(
                         labelText: 'Şikayet',
                         border: OutlineInputBorder(

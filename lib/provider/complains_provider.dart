@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class ComplainsProvider with ChangeNotifier {
   List<Complain> _complains = [
     Complain(
-      name: 'Fatih Emin Öge',
+      username: 'Fatih Emin Öge',
       complainTopic: 'Park Sorunu',
       complain: 'Kadiköydeki oyun parklarındaki oyuncaklar kırık',
       location: LatLng(40.990307, 29.0298),
@@ -16,7 +16,7 @@ class ComplainsProvider with ChangeNotifier {
       upVote: 7,
     ),
     Complain(
-      name: 'Ahmet Akıl',
+      username: 'Ahmet Akıl',
       complainTopic: 'Sokak hayvanları',
       complain: 'Sokak hayvanları geceleri çok ses çıkarıyor.',
       location: LatLng(40.990307, 29.0298),
@@ -27,7 +27,7 @@ class ComplainsProvider with ChangeNotifier {
       upVote: 7,
     ),
     Complain(
-      name: 'Fatih Emin Öge',
+      username: 'Fatih Emin Öge',
       complainTopic: 'Çöpler toplanmıyor',
       complain: 'Belediye çöpleri toplamıyor',
       location: LatLng(40.990307, 29.0298),
@@ -41,14 +41,14 @@ class ComplainsProvider with ChangeNotifier {
   ];
 
   void addNewComplain({
-    String name,
+    String username,
     String complainTopic,
     String complain,
     LatLng location,
     DateTime date,
   }) async{
     final newComp = Complain(
-      name: name,
+      username: username,
       complainTopic: complainTopic,
       complain: complain,
       dateTime: date,

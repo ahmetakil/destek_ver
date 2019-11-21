@@ -58,7 +58,7 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                     Column(
                       children: <Widget>[
                         Text(
-                          widget.comp.name,
+                          widget.comp.username,
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,

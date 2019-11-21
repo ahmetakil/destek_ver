@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rating_bar/rating_bar.dart';
 
 import '../models/question_answer.dart';
+import '../util/utils.dart';
 
 class SurveyItem extends StatefulWidget {
   final String question;
@@ -90,14 +91,18 @@ class _SurveyItemState extends State<SurveyItem> {
   Widget buildButtonWithImages(List<QuestionAnswer> questionAnswers) {
     return Container(
       height: questionAnswers[0].answer == null
-          ? questionAnswers.length * 80.0
-          : questionAnswers.length * 225.0,
+          ? questionAnswers.length * screenSize(80.0, context)
+          : questionAnswers.length * screenSize(225.0, context),
       child: Wrap(
         alignment: WrapAlignment.center,
         children: questionAnswers.map((answer) {
           return Container(
-            height: answer.answer == null ? 100 : 200,
-            width: answer.answer == null ? 140 : double.infinity,
+            height: answer.answer == null
+                ? screenSize(100.0, context)
+                : screenSize(200.0, context),
+            width: answer.answer == null
+                ? screenSize(130.0, context)
+                : double.infinity,
             margin: EdgeInsets.all(10),
             child: InkWell(
               borderRadius: BorderRadius.circular(15),

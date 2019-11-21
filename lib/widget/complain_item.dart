@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import '../models/complain.dart';
 import '../screens/profile_screen.dart';
 import '../screens/complain_detail_screen.dart';
+import '../util/utils.dart';
+
 
 class ComplainItem extends StatefulWidget {
   final Complain complain;
@@ -55,7 +57,7 @@ class _ComplainItemState extends State<ComplainItem> {
                         SizedBox(
                           width: 10,
                         ),
-                        Text(comp.name),
+                        Text(comp.username),
                       ],
                     ),
                   ),
@@ -66,8 +68,8 @@ class _ComplainItemState extends State<ComplainItem> {
             InkWell(
               onTap: () => selectComp(context),
               child: Container(
-                height: 100,
-                width: 300,
+                height: screenSize(100.0, context),
+                width: screenSize(280.0, context),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[

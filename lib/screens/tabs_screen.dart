@@ -42,7 +42,7 @@ class _TabsScreenState extends State<TabsScreen> {
         bottomNavigationBar: CurvedNavigationBar(
           key: navKey,
           animationDuration: Duration(milliseconds: 200),
-          color: Color.fromRGBO(76, 175, 80, 1),
+          color: Colors.green,
           backgroundColor: Colors.white,
           items: <Widget>[
             Icon(
