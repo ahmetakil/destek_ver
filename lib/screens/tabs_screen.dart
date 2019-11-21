@@ -43,7 +43,7 @@ class _TabsScreenState extends State<TabsScreen> {
           key: navKey,
           animationDuration: Duration(milliseconds: 200),
           color: Color.fromRGBO(76, 175, 80, 1),
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           items: <Widget>[
             Icon(
               Icons.message,
@@ -54,7 +54,7 @@ class _TabsScreenState extends State<TabsScreen> {
               color: Colors.white,
             ),
             Icon(
-              Icons.add_circle_outline,
+              Icons.edit,
               size: 32,
               color: Colors.white,
             ),

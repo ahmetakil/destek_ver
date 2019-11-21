@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class LocationInput extends StatefulWidget {
-  static String address;
+
   @override
   _LocationInputState createState() => _LocationInputState();
 }
@@ -15,14 +15,8 @@ class _LocationInputState extends State<LocationInput> {
   String _imgPreviewUrl;
   LatLng _location;
 
-  void loadInitialLoc() async {
-    _location = await LocationUtil.getCurrentLocation();
-    _imgPreviewUrl = await LocationUtil.generateLocImage(_location);
-  }
-
   @override
   void initState() {
-    loadInitialLoc();
     super.initState();
   }
 
@@ -38,7 +32,7 @@ class _LocationInputState extends State<LocationInput> {
 
   Future<void> selectOnMap() async {
     final locData = await LocationUtil.getCurrentLocation();
-    _location = LatLng(locData.latitude, locData.longitude);
+    this._location = LatLng(locData.latitude, locData.longitude);
     final LatLng selected = await Navigator.of(context).push(
       MaterialPageRoute(
         fullscreenDialog: true,
@@ -82,7 +76,7 @@ class _LocationInputState extends State<LocationInput> {
                     )),
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             FlatButton.icon(
                 onPressed: loadImageUrl,

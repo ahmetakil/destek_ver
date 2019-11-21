@@ -58,8 +58,8 @@ class ProfileScreen extends StatelessWidget {
     final Complain complainProfile = ModalRoute.of(context).settings.arguments;
     List<Complain> personsComplains = complains.where((comp) {
       return identical(
-        comp.name.toLowerCase(),
-        complainProfile == null ? "fatih emin öge" : complainProfile.name,
+        comp.username.toLowerCase(),
+        complainProfile == null ? "fatih emin öge" : complainProfile.username,
       );
     }).toList();
 
@@ -75,7 +75,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             body: buildScreen(
               personsComplains,
-              complainProfile.name,
+              complainProfile.username,
               context,
             ),
           );

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Complain {
-  final String name;
+  final String username;
   final String complainTopic;
   final String complain;
   final DateTime dateTime;
@@ -15,7 +15,7 @@ class Complain {
   bool solved;
 
   Complain({
-    @required this.name,
+    @required this.username,
     @required this.complainTopic,
     @required this.complain,
     @required this.dateTime,

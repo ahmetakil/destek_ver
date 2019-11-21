@@ -22,7 +22,6 @@ class LocationUtil {
         "https://maps.googleapis.com/maps/api/geocode/json?latlng=${locData.latitude},${locData.longitude}&key=$API_KEY";
 
     final res = await http.get(url);
-    print(res.body);
     return json.decode(res.body)["results"][0]["formatted_address"];
   }
 

@@ -4,6 +4,7 @@ import 'package:DestekVer/widget/location_input.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import '../widget/media_input.dart';
 
 class NewComplain extends StatefulWidget {
   static const routeName = '/newComplain';
@@ -13,9 +14,15 @@ class NewComplain extends StatefulWidget {
 }
 
 class _NewComplainState extends State<NewComplain> {
+
   final _complainTopicController = TextEditingController();
   final _complainController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Image selected;
+
+
 
   void _submitData() {
     if (!_formKey.currentState.validate()) {
@@ -23,6 +30,13 @@ class _NewComplainState extends State<NewComplain> {
     }
 
     LatLng loc = Provider.of<LocationProvider>(context).location;
+
+    if (loc == null) {
+      _scaffoldKey.currentState.showSnackBar(SnackBar(
+        content: Text("Lütfen konum belirtin"),
+      ));
+      return;
+    }
 
     Provider.of<ComplainsProvider>(context, listen: false).addNewComplain(
       name: 'Ahmet Akıl',
@@ -37,10 +51,32 @@ class _NewComplainState extends State<NewComplain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
-        child: Icon(Icons.check),
-        onPressed: _submitData,
+      key: _scaffoldKey,
+      floatingActionButton: Container(
+        transform: Matrix4.translationValues(0, 10, 0),
+        child: RaisedButton(
+          color: Colors.blue[400],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(
+                Icons.send,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Text(
+                "Gönder",
+                style: TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
+          onPressed: _submitData,
+        ),
       ),
       body: Column(
         children: <Widget>[
@@ -74,7 +110,7 @@ class _NewComplainState extends State<NewComplain> {
                         if (value.isEmpty) {
                           return "Lütfen Şikayetinizi Girin";
                         } else if (value.length < 5) {
-                          return "Şikayetiniz en az 6 karakter olmalıdır";
+                          return "Şikayetiniz en az 6 karakter olmalıdır Mevcut: ${value.length} ";
                         } else if (value.length > 200) {
                           return "Şikayetiniz en fazla 200 karakter olmalıdır";
                         }
@@ -90,6 +126,7 @@ class _NewComplainState extends State<NewComplain> {
                     ),
                     SizedBox(height: 20),
                     LocationInput(),
+                    MediaInput(selected),
                   ],
                 ),
               ),

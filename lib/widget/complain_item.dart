@@ -55,7 +55,7 @@ class _ComplainItemState extends State<ComplainItem> {
                         SizedBox(
                           width: 10,
                         ),
-                        Text(comp.name),
+                        Text(comp.username),
                       ],
                     ),
                   ),
