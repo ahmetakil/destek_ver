@@ -1,9 +1,9 @@
 import 'package:DestekVer/screens/map_screen.dart';
+import 'package:DestekVer/util/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../models/complain.dart';
-import '../screens/profile_screen.dart';
 
 class ComplainDetailScreenItem extends StatefulWidget {
   final Complain comp;
@@ -31,8 +31,9 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   widget.comp.complainTopic,
+                  overflow: TextOverflow.fade,
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: screenSize(20,context),
                     fontWeight: FontWeight.bold,
                   ),
                 ),

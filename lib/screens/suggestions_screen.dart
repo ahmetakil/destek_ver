@@ -1,3 +1,5 @@
+import 'package:DestekVer/services/locator.dart';
+import 'package:DestekVer/services/page_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,18 +17,40 @@ class _SuggestionsScreenState extends State<SuggestionsScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
-  final snackbar = SnackBar(
-    content: Text('Öneriniz belediyenize iletildi'),
-  );
-
   void _submitData(BuildContext context) {
     if (!_formKey.currentState.validate()) {
       return;
     }
-    Scaffold.of(context).showSnackBar(snackbar);
     setState(() {
       _formKey.currentState.reset();
     });
+    _showDialog();
+  }
+
+  void _showDialog() {
+    // flutter deshowDfined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: Text(
+              "Önerileriniz bizim için çok değerli. Destek verdiğiniz için teşekkürler! "),
+          actions: <Widget>[
+            // usually bttons at the bottom of the dialog
+            FlatButton(
+              child: Text(
+                "Anasayfaya Dön",
+              ),
+              onPressed: () {
+                locator<PageService>().setPage(0);
+                Navigator.of(context).pushReplacementNamed("/");
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override

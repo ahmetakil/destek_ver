@@ -93,6 +93,10 @@ class _ComplainItemState extends State<ComplainItem> {
                     Flexible(
                       child: Text(
                         comp.complain,
+                        overflow: TextOverflow.fade,
+                        style: TextStyle(
+                          fontSize: screenSize(12, context)
+                        ),
                       ),
                     )
                   ],

@@ -13,7 +13,7 @@ class ComplainDetailScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'DestekVer',
+              'Şikayet Detayı',
             style: TextStyle(color: Colors.white),
           ),
         ),

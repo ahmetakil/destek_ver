@@ -20,7 +20,7 @@ class ComplainsProvider with ChangeNotifier {
       upVote: 185,
     ),
     Complain(
-      username: 'Hasan K.',
+      username: 'Ahmet A.',
       complainTopic: 'Yanıp Sönen Işıklar',
       complain:
           ' Herkese iyi günler, Her gün işe giderken geçtiğim Beylikdüzü Cumhuriyet Caddesi’ndeki kavşakta yanıp sönen ışıklar büyük tehlike yaratıyor. Hem insanlar orada çok vakit kaybediyor hem de birçok kazaya sebebiyet veriyor. Buradaki ışıklara bir düzenleme gelmesini talep ediyorum.',
@@ -35,31 +35,6 @@ class ComplainsProvider with ChangeNotifier {
       replied: true,
     ),
     Complain(
-      username: 'Fatih E.',
-      complainTopic: 'Park Sorunu',
-      complain: 'Kadiköydeki oyun parklarındaki oyuncaklar kırık ve bakımsız',
-      location: LatLng(40.990307, 29.0298),
-      fullAddress:
-          "Kadıköy Bull Statue, Osmanağa, Söğütlü Çeşme Caddesi, Kadıköy/İstanbul",
-      shortAddress: "Osmanağa mah. Kadiköy/Istanbul",
-      dateTime: DateTime.now(),
-      imageUrl:
-          "https://www.haberankara.com/images/haberler/2016/09/ankara-ya-yakismiyor-cocuk-parki-demeye-bin-sahit.jpg",
-      upVote: 157,
-    ),
-    Complain(
-      username: 'Ahmet A.',
-      complainTopic: 'Sokak hayvanları',
-      complain: 'Sokak hayvanları geceleri çok ses çıkarıyor.',
-      location: LatLng(40.990307, 29.0298),
-      fullAddress:
-          "Kadıköy Bull Statue, Osmanağa, Söğütlü Çeşme Caddesi, Kadıköy/İstanbul",
-      shortAddress: "Osmanağa mah. Kadiköy/Istanbul",
-      dateTime: DateTime.now(),
-      replied: true,
-      upVote: 152,
-    ),
-    Complain(
       username: 'Selinay P.',
       complainTopic: 'Asfalt Sorunu',
       complain:
@@ -67,6 +42,7 @@ class ComplainsProvider with ChangeNotifier {
       location: LatLng(1, 1),
       fullAddress: "Pınar, Çamlıbel Cd. 39/C, 34460 Sarıyer/İstanbul, Türkiye",
       shortAddress: "Pınar Mah. Sariyer/Istanbul",
+      imageUrl: "https://www.haberankara.com/images/haberler/2016/09/ankara-ya-yakismiyor-cocuk-parki-demeye-bin-sahit.jpg",
       dateTime: DateTime.now(),
       replied: true,
       upVote: 146,
@@ -84,7 +60,7 @@ class ComplainsProvider with ChangeNotifier {
       upVote: 143,
     ),
     Complain(
-      username: 'Muhammet Ali K.',
+      username: 'Ahmet A.',
       complainTopic: 'Yanlış Otobüs Saatleri',
       complain:
       ' Herkese merhaba Bugün Levent otobüs duraklarında beklerken ekranın otobüs numara ve saatlerini çok yanlış gösterdiğini fark ettim. Burası çok kullanılan bir durak ve yabancılar da çok. Bence insanlar daha fazla yanlış yönlendirilmeden düzeltilmesi gerekiyor.',
@@ -96,18 +72,6 @@ class ComplainsProvider with ChangeNotifier {
       solved: true,
       upVote: 139,
     ),
-    Complain(
-        username: 'Fatih E.',
-        complainTopic: 'Çöpler toplanmıyor',
-        complain: 'Belediye çöpleri toplamıyor',
-        location: LatLng(40.990307, 29.0298),
-        fullAddress:
-            "Kadıköy Bull Statue, Osmanağa, Söğütlü Çeşme Caddesi, Kadıköy/İstanbul",
-        shortAddress: "Osmanağa mah. Kadiköy/Istanbul",
-        dateTime: DateTime.now(),
-        replied: true,
-        solved: true,
-        upVote: 133),
     Complain(
       username: 'Ahmet A.',
       complainTopic: 'Kanalizasyon Kokusu',

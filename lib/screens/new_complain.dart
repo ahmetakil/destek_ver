@@ -64,7 +64,7 @@ class _NewComplainState extends State<NewComplain> {
     uploadFile();
   }
 
-  void _submitData() async{
+  void _submitData() async {
     if (!_formKey.currentState.validate()) {
       return;
     }
@@ -79,7 +79,7 @@ class _NewComplainState extends State<NewComplain> {
       ));
       return;
     }
-    if((hasImage && !loading) || !hasImage) {
+    if ((hasImage && !loading) || !hasImage) {
       Provider.of<ComplainsProvider>(context, listen: false).addNewComplain(
         username: 'Ahmet A.',
         complainTopic: _complainTopicController.text,
@@ -89,9 +89,34 @@ class _NewComplainState extends State<NewComplain> {
         imageUrl: _imageUrl,
       );
       locationProvider.location = null;
-      locator<PageService>().setPage(0);
-      Navigator.of(context).pushReplacementNamed("/");
+      _showDialog();
     }
+  }
+
+  void _showDialog() {
+    // flutter deshowDfined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: Text(
+              "Talebiniz alındı ve ilgili birime iletiliyor. Destek verdiğiniz için teşekkürler!"),
+          actions: <Widget>[
+            // usually bttons at the bottom of the dialog
+            FlatButton(
+              child: Text(
+                "Anasayfaya Dön",
+              ),
+              onPressed: () {
+                locator<PageService>().setPage(0);
+                Navigator.of(context).pushReplacementNamed("/");
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override

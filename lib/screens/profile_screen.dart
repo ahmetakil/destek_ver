@@ -20,11 +20,11 @@ class ProfileScreen extends StatelessWidget {
     List<Complain> filteredComplains = complains.where((comp) {
       if (all) {
         return true;
-      }
-      if (replied) {
-        return comp.replied;
-      } else if (solved) {
+      }else if (solved) {
         return comp.solved;
+      }
+      else if (replied && !comp.solved) {
+        return comp.replied;
       } else {
         return !comp.replied && !comp.solved;
       }
@@ -69,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: screenSize(70, context),
+              width: screenSize(80, context),
             ),
             Row(
               children: <Widget>[
@@ -145,7 +145,7 @@ class ProfileScreen extends StatelessWidget {
               children: <Widget>[
                 buildList(complains: complain,all:true),
                 buildList(complains: complain, unresolved: true),
-                buildList(complains: complain, replied: true),
+                buildList(complains: complain, replied: true,solved: false),
                 buildList(complains: complain, solved: true),
               ],
             ),

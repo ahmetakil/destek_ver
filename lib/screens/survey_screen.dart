@@ -32,7 +32,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
   }
 
   void _showDialog(bool allQuestionsAnswered) {
-    // flutter defined function
+    // flutter deshowDfined function
     showDialog(
       context: context,
       builder: (BuildContext context) {
