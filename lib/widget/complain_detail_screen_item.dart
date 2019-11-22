@@ -1,9 +1,10 @@
 import 'package:DestekVer/screens/map_screen.dart';
+import 'package:DestekVer/util/utils.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../models/complain.dart';
-import '../screens/profile_screen.dart';
 
 class ComplainDetailScreenItem extends StatefulWidget {
   final Complain comp;
@@ -29,12 +30,12 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
             children: <Widget>[
               Container(
                 alignment: Alignment.centerLeft,
-                child: Text(
+                child: AutoSizeText(
                   widget.comp.complainTopic,
                   style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontWeight: FontWeight.bold,
+                      fontSize: screenSize(18, context)),
+                  maxLines: 1,
                 ),
               ),
               Spacer(),
@@ -63,13 +64,17 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                   ),
                   Column(
                     children: <Widget>[
-                      Text(
+                      AutoSizeText(
                         widget.comp.username,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                        maxLines: 1,
                       ),
+                      // Text(
+                      //   widget.comp.username,
+                      //   style: TextStyle(
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],
@@ -133,8 +138,7 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
                         "Merhaba, Şikayetiniz üzerine başlatılan süreç tamamlanmış olup şikayetiniz çözüme ulaştırılmıştır. Çözümü değerlendirmek için memnuniyet anketimize katılabilir, başka bir sorun iletmek için yeni bir şikayet oluşturabilirsiniz. Konuyla ilgili hassasiyetiniz için teşekkür ederiz.",
-                        style:
-                            TextStyle(color: Colors.green, fontSize: 16),
+                        style: TextStyle(color: Colors.green, fontSize: 16),
                       ),
                     )
                 ],
