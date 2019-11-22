@@ -22,14 +22,13 @@ class _NewComplainState extends State<NewComplain> {
 
   Image selected;
 
-
-
   void _submitData() {
     if (!_formKey.currentState.validate()) {
       return;
     }
 
-    LatLng loc = Provider.of<LocationProvider>(context).location;
+    final locationProvider = Provider.of<LocationProvider>(context,listen: false);
+    LatLng loc = locationProvider.location;
 
     if (loc == null) {
       _scaffoldKey.currentState.showSnackBar(SnackBar(
@@ -45,6 +44,7 @@ class _NewComplainState extends State<NewComplain> {
       location: loc,
       date: DateTime.now(),
     );
+    locationProvider.location = null;
     Navigator.of(context).pushReplacementNamed('/');
   }
 

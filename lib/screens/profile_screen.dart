@@ -74,27 +74,26 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Complain> complains =
         Provider.of<ComplainsProvider>(context).allComplains;
-    final Complain complainProfile = ModalRoute.of(context).settings.arguments;
+     String username = ModalRoute.of(context).settings.arguments;
+    print("TUM : ${complains}");
+    print("PROFIL ADI ${username}");
     List<Complain> personsComplains = complains.where((comp) {
-      return identical(
-        comp.username.toLowerCase(),
-        complainProfile == null ? "fatih emin öge" : complainProfile.username,
-      );
+      if(username == null){
+        username =  "Ahmet Akıl";
+      }
+      return comp.username == username;
     }).toList();
 
-    return complainProfile == null
+    return username == null
         ? buildScreen(
             personsComplains,
             'Ahmet Akıl',
             context,
           )
         : Scaffold(
-            appBar: AppBar(
-              title: Text('DestekVar'),
-            ),
             body: buildScreen(
               personsComplains,
-              complainProfile.username,
+              username,
               context,
             ),
           );

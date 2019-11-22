@@ -34,7 +34,6 @@ class _TabsScreenState extends State<TabsScreen> {
     return DefaultTabController(
       length: _pages.length,
       child: Scaffold(
-        drawer: Drawer(),
         appBar: AppBar(
           title: Text('DestekVer'),
         ),

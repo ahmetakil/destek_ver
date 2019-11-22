@@ -27,7 +27,7 @@ class _ComplainItemState extends State<ComplainItem> {
   void goToProfile(BuildContext context) {
     Navigator.of(context).pushNamed(
       ProfileScreen.routeName,
-      arguments: widget.complain,
+      arguments: widget.complain.username,
     );
   }
 

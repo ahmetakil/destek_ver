@@ -15,12 +15,7 @@ class _LocationInputState extends State<LocationInput> {
   String _imgPreviewUrl;
   LatLng _location;
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  void loadImageUrl() async {
+  void selectCurrentLocation() async {
     this._location = await LocationUtil.getCurrentLocation();
 
     String url = await LocationUtil.generateLocImage(_location);
@@ -79,7 +74,7 @@ class _LocationInputState extends State<LocationInput> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             FlatButton.icon(
-                onPressed: loadImageUrl,
+                onPressed: selectCurrentLocation,
                 icon: Icon(Icons.location_on),
                 label: Text(
                   "Mevcut Konumum",

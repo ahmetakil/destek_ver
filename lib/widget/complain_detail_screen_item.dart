@@ -17,7 +17,7 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
   void goToProfile(BuildContext context) {
     Navigator.of(context).pushNamed(
       ProfileScreen.routeName,
-      arguments: widget.comp,
+      arguments: widget.comp.username,
     );
   }
 
@@ -50,7 +50,7 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                   children: <Widget>[
                     Icon(
                       Icons.account_circle,
-                      size: 30,
+                      size: 40,
                     ),
                     SizedBox(
                       width: 10,
@@ -60,7 +60,7 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                         Text(
                           widget.comp.username,
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -70,7 +70,7 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                         Text(
                           DateFormat('dd/MM/yyyy').format(widget.comp.dateTime),
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 15,
                           ),
                         ),
                       ],
@@ -103,6 +103,7 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Row(
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 IconButton(
                   icon: widget.comp.upvoted
@@ -120,6 +121,7 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                     },
                   ),
                 ),
+                SizedBox(width: 7,),
                 Text(
                   widget.comp.upVote.toString(),
                   style: TextStyle(
@@ -129,13 +131,16 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
               ],
             ),
             Flexible(
-              child: Text(
-                widget.comp.fullAddress,
-                textAlign: TextAlign.right,
-                softWrap: true,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.all(4),
+                child: Text(
+                  widget.comp.fullAddress,
+                  textAlign: TextAlign.right,
+                  softWrap: true,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             )
