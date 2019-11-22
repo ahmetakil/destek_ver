@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../screens/survey_screen.dart';
 
 class SurveySelectScreen extends StatelessWidget {
+  static const routeName = '/SurveySelectScreen';
+
   final List<String> surveys = [
     'Park ve Bahçeler',
     'Sokak Hayvanları',

@@ -39,7 +39,7 @@ class _SurveyItemState extends State<SurveyItem> {
           emptyIcon: Icons.star_border,
           halfFilledIcon: Icons.star_half,
           isHalfAllowed: true,
-          filledColor: Colors.yellow,
+          filledColor: Color.fromRGBO(255, 215, 0, 1),
           emptyColor: Colors.black,
           halfFilledColor: Colors.yellow,
           size: 48,
@@ -69,7 +69,7 @@ class _SurveyItemState extends State<SurveyItem> {
                   });
                 },
                 child: Container(
-                  margin: EdgeInsets.all(15),
+                  margin: EdgeInsets.all(10),
                   child: Text(
                     '${answer.choice} ${answer.answer}',
                     style: TextStyle(
@@ -140,7 +140,8 @@ class _SurveyItemState extends State<SurveyItem> {
                     leading: Text(
                       '${answer.choice}  ${answer.answer == null ? "" : answer.answer}',
                       style: TextStyle(
-                        color: answer.selected ? Colors.amber[800] : Colors.white,
+                        color:
+                            answer.selected ? Colors.amber[800] : Colors.white,
                         fontSize: 13,
                       ),
                     ),
@@ -156,6 +157,7 @@ class _SurveyItemState extends State<SurveyItem> {
 
   Widget buildInputTaker(QuestionAnswer questionAnswer) {
     final _inputController = TextEditingController();
+    questionAnswer.selected = true;
 
     return TextField(
       decoration: InputDecoration(

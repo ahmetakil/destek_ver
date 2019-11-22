@@ -78,11 +78,11 @@ HAFTAYA:
 
 
     22 KASIM NOTLAR:
-    - Anketler (text kısmı hariç) doldurulması doldurulmadan önce
+    - + Anketler (text kısmı hariç) doldurulması doldurulmadan önce
     gönder düğmesi olmayacak
-    - Rating star altına yakın bi sarı
-    - Anketin içindeyken appbarda anket adı yazsın
-    - Evet Hayır Bilgim yok boşlukları küçült
+    - + Rating star altına yakın bi sarı
+    -  + Anketin içindeyken appbarda anket adı yazsın
+    - + Evet Hayır Bilgim yok boşlukları küçült
     - New complain ekranında gbönderi maviden yeşil yap
     - Yeni Şikayet yerine Şikayet Ekle yaz + Öneri Ekle
     - Tüm şikayetler / cevaplananlar sadece kendi sekmelerinde olucak

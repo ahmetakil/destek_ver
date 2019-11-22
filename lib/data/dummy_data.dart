@@ -37,7 +37,7 @@ Map<String, List<QuestionAnswer>> ANSWERS = {
     ),
     QuestionAnswer(
       imageUrl:
-          'https://lh3.googleusercontent.com/g1dF8mWvwx-FDE7T7yx4X8Ur_cyyDhvurGUDdjZ4TkB7BbkZVU2d4hirC4kyu09cKhcY=s128',
+          'http://www.edatermal.com/media/k2/galleries/276/oyun-parki-04.jpg',
       selected: false,
       choice: 'C)',
       image: true,

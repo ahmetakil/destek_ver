@@ -13,12 +13,9 @@ class SurveyScreen extends StatefulWidget {
 
 class _SurveyScreenState extends State<SurveyScreen> {
   List<Map<String, QuestionAnswer>> answerToQuestions;
-
+  bool isButtonEnabled = false;
   void findChoice() {
-    final int typeOfSurvey = ModalRoute
-        .of(context)
-        .settings
-        .arguments as int;
+    final int typeOfSurvey = ModalRoute.of(context).settings.arguments as int;
     String survey = SURVEY_TYPES[typeOfSurvey];
     List<String> questions = QUESTIONS[survey];
 
@@ -26,23 +23,59 @@ class _SurveyScreenState extends State<SurveyScreen> {
       ANSWERS[question].map((answer) {
         return answer.selected
             ? [
-          {question: answer}
-        ]
+                {question: answer}
+              ]
             : null;
       });
     }).toList();
+  }
 
-    answerToQuestions.forEach((answer) {
-      print(answer);
-    });
+  void _showDialog(bool allQuestionsAnswered) {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: Text(allQuestionsAnswered
+              ? "Geri bildiriminiz için teşekkürler"
+              : "Lütfen tüm soruları cevaplandırınız"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Geri dön"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  bool allQuestionsAnswered() {
+    final int typeOfSurvey = ModalRoute.of(context).settings.arguments as int;
+    String survey = SURVEY_TYPES[typeOfSurvey];
+    List<String> questions = QUESTIONS[survey];
+    bool surveyIsCompleted = false;
+
+    for (String question in questions) {
+      for (QuestionAnswer answer in ANSWERS[question]) {
+        if (answer.selected) {
+          surveyIsCompleted = true;
+          break;
+        } else {
+          surveyIsCompleted = false;
+        }
+      }
+    }
+    return surveyIsCompleted;
   }
 
   @override
   Widget build(BuildContext context) {
-    final int typeOfSurvey = ModalRoute
-        .of(context)
-        .settings
-        .arguments as int;
+    final int typeOfSurvey = ModalRoute.of(context).settings.arguments as int;
     String survey = SURVEY_TYPES[typeOfSurvey];
     List<String> questions = QUESTIONS[survey];
 
@@ -52,25 +85,18 @@ class _SurveyScreenState extends State<SurveyScreen> {
           borderRadius: BorderRadius.circular(15),
         ),
         onPressed: () {
-          findChoice();
-          showDialog(
-              context: context,
-              builder: (_) =>
-                  AlertDialog(
-                    title: Text("Anket Tamamlandı !"),
-                    content: Text(
-                        "Anketi tamamlandığınız için teşekkür ederiz."),
-                    actions: <Widget>[
-                      RaisedButton(
-                        child: Text("Geri Dön"),
-                        onPressed: ()  {
-                          Navigator.of(context).pop();
-                        },
-                      )
-                    ],
-                  )
-          );
-          Navigator.of(context).pop();
+          print(allQuestionsAnswered());
+          if (allQuestionsAnswered()) {
+            _showDialog(allQuestionsAnswered());
+            Future.delayed(const Duration(milliseconds: 1000), () {
+              setState(() {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              });
+            });
+          } else {
+            _showDialog(allQuestionsAnswered());
+          }
         },
         child: Container(
           width: screenSize(75, context),
@@ -95,7 +121,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
         color: Colors.green,
       ),
       appBar: AppBar(
-        title: Text('DestekVer'),
+        title: Text(
+          survey,
+        ),
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
