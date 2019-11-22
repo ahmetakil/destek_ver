@@ -49,7 +49,7 @@ class ComplainScreen extends StatelessWidget {
           tabs: <Widget>[
             Tab(
               child: Text(
-                "Şikayetler",
+                "Yeniler",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: screenSize(12.5, context),

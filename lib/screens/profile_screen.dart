@@ -1,6 +1,7 @@
 import 'package:DestekVer/provider/complains_provider.dart';
 import 'package:DestekVer/util/utils.dart';
 import 'package:DestekVer/widget/complain_item.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,8 +15,12 @@ class ProfileScreen extends StatelessWidget {
     bool unresolved = false,
     bool replied = false,
     bool solved = false,
+    bool all = false,
   }) {
     List<Complain> filteredComplains = complains.where((comp) {
+      if (all) {
+        return true;
+      }
       if (replied) {
         return comp.replied;
       } else if (solved) {
@@ -95,34 +100,42 @@ class ProfileScreen extends StatelessWidget {
         ),
         Expanded(
             child: DefaultTabController(
-          length: 3,
+          length: 4,
           child: Scaffold(
             appBar: TabBar(
               indicatorColor: Colors.green,
               tabs: <Widget>[
                 Tab(
-                  child: Text(
-                    "Şikayetler",
+                  child: Icon(Icons.star,color: Colors.amber,),
+                ),
+                Tab(
+                  child: AutoSizeText(
+                    "Yeniler",
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: screenSize(12.5, context),
                     ),
                   ),
                 ),
                 Tab(
-                    child: Text(
+                    child: AutoSizeText(
                   'Cevaplananlar',
+                  overflow: TextOverflow.fade,
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.yellow[900],
-                    fontSize: screenSize(12.5, context),
                   ),
                 )),
                 Tab(
-                  child: Text(
-                    "Çözümlenenler",
+                  child: AutoSizeText(
+                    "Çözülenler",
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
                     style: TextStyle(
                       color: Color(0xff00681D),
-                      fontSize: screenSize(12.5, context),
+                      fontSize: screenSize(12, context),
                     ),
                   ),
                 ),
@@ -130,7 +143,8 @@ class ProfileScreen extends StatelessWidget {
             ),
             body: TabBarView(
               children: <Widget>[
-                buildList(complains: complain,unresolved: true),
+                buildList(complains: complain,all:true),
+                buildList(complains: complain, unresolved: true),
                 buildList(complains: complain, replied: true),
                 buildList(complains: complain, solved: true),
               ],

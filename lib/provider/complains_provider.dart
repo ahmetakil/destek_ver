@@ -109,7 +109,7 @@ class ComplainsProvider with ChangeNotifier {
         solved: true,
         upVote: 133),
     Complain(
-      username: 'Enes Z.',
+      username: 'Ahmet A.',
       complainTopic: 'Kanalizasyon Kokusu',
       complain:
           'Buradan Ümraniye Belediyesi’ne sesleniyorum kokudan öleceğiz artık!!! 2 hafta önce patlayan kanalizasyon borusundan iğrenç bir koku geliyor ve artık buramıza kadar geldi. Her yeri aradık ama 2 haftadır hiç kimseyi göndermediler. Çakmak’tayız acil dönüş bekliyoruz!',
