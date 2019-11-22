@@ -16,12 +16,6 @@ class ComplainDetailScreenItem extends StatefulWidget {
 }
 
 class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
-  void goToProfile(BuildContext context) {
-    Navigator.of(context).pushNamed(
-      ProfileScreen.routeName,
-      arguments: widget.comp.username,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,77 +24,86 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
         SizedBox(
           height: 10,
         ),
-        Container(
-          alignment: Alignment.center,
-          margin: EdgeInsets.all(10),
-          child: Text(
-            widget.comp.complainTopic,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            children: <Widget>[
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  widget.comp.complainTopic,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Spacer(),
+              Text(
+                DateFormat('dd/MM/yyyy').format(widget.comp.dateTime),
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ],
           ),
         ),
-        GestureDetector(
-          onTap: () => goToProfile(context),
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.account_circle,
-                      size: 40,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          widget.comp.username,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+        Padding(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Icon(
+                    Icons.account_circle,
+                    size: 40,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        widget.comp.username,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          DateFormat('dd/MM/yyyy').format(widget.comp.dateTime),
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
         SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Text(
-                widget.comp.complain,
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-              SizedBox(height: 20,),
-              if (widget.comp.imageUrl != null)
+          child: Container(
+            width: double.infinity,
+            child: Column(
+              children: <Widget>[
                 Container(
-                  width: double.infinity,
-                  height: 250,
-                  child: Image.network(widget.comp.imageUrl,
-                  fit: BoxFit.cover,),
+                  padding: const EdgeInsets.all(8.0),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    widget.comp.complain,
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
                 ),
-            ],
+                SizedBox(height: 20,),
+                if (widget.comp.imageUrl != null)
+                  Container(
+                    padding: EdgeInsets.all(8),
+                    width: double.infinity,
+                    height: 250,
+                    child: Image.network(widget.comp.imageUrl,
+                    fit: BoxFit.cover,),
+                  ),
+              ],
+            ),
           ),
         ),
         Spacer(),
@@ -143,7 +146,7 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
             ),
             Flexible(
               child: Padding(
-                padding: const EdgeInsets.all(4),
+                padding: const EdgeInsets.all(10),
                 child: InkWell(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     fullscreenDialog: true,
@@ -154,7 +157,6 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                   child: Text(
                     widget.comp.fullAddress,
                     textAlign: TextAlign.right,
-                    softWrap: true,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -169,3 +171,11 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
     );
   }
 }
+/*
+Resme padding + biraz aşağı indir
+isim sansürleme Fatih Ö.
+
+- Herkesin profili kendine
+Profilim appbar için
+
+ */

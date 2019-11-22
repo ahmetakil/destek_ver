@@ -17,7 +17,7 @@ class ComplainList extends StatelessWidget {
 
     switch (typeOfList) {
       case 0:
-        complains = complainData.allComplains;
+        complains = complainData.unresolvedComplains;
         break;
       case 1:
         complains = complainData.repliedComplains;
@@ -26,7 +26,7 @@ class ComplainList extends StatelessWidget {
         complains = complainData.solvedComplains;
         break;
       default:
-        complains = complainData.allComplains;
+        complains = complainData.unresolvedComplains;
     }
 
     return ListView.builder(

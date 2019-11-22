@@ -10,7 +10,7 @@ class ComplainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final complains = Provider.of<ComplainsProvider>(context);
 
-    if (complains.allComplains.isEmpty) {
+    if (complains.unresolvedComplains.isEmpty) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -39,16 +39,17 @@ class ComplainScreen extends StatelessWidget {
         ),
       );
     }
+
+
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: TabBar(
-          labelColor: Colors.green,
           indicatorColor: Colors.green,
           tabs: <Widget>[
-            Tab(text: 'Tüm Şikayetler'),
-            Tab(text: 'Cevaplananlar'),
-            Tab(text: 'Çözülenler'),
+            Tab(child: Text("Tüm Şikayetler",style: TextStyle(color: Colors.black),),),
+            Tab(child: Text('Cevaplananlar',style: TextStyle(color: Colors.yellow[900]),)),
+            Tab(child: Text("Çözülenler",style: TextStyle(color: Color(0xff00681D)),),),
           ],
         ),
         body: TabBarView(

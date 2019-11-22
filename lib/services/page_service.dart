@@ -4,9 +4,9 @@ class PageService{
   List<String> appBarTitles = [
     "DestekVer",
     "Anketler",
-    "Yeni Şikayet",
-    "Yeni Öneri",
-    "DestekVer"
+    "Şikayet Ekle",
+    "Öneri Ekle",
+    "Profilim"
   ];
 
 

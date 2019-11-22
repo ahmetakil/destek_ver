@@ -14,10 +14,13 @@ class ProfileScreen extends StatelessWidget {
       children: <Widget>[
         Row(
           children: <Widget>[
-            Container(
-              child: Icon(
-                Icons.account_circle,
-                size: 100,
+            Padding(
+              padding: const EdgeInsets.all(6.0),
+              child: Container(
+                child: Icon(
+                  Icons.account_circle,
+                  size: 90,
+                ),
               ),
             ),
             Container(
@@ -30,10 +33,14 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 40,
+              width: 85,
             ),
             Row(
               children: <Widget>[
+                Text(
+                  ' 5',
+                  style: TextStyle(fontSize: 28),
+                ),
                 Stack(
                   children: [
                     Icon(
@@ -48,13 +55,12 @@ class ProfileScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                Text(' 5',style: TextStyle(fontSize: 28),),
               ],
             ),
           ],
         ),
         Divider(
-          thickness: 5,
+          thickness: 4,
         ),
         Expanded(
           child: complain.isNotEmpty
@@ -79,8 +85,9 @@ class ProfileScreen extends StatelessWidget {
     String username = ModalRoute.of(context).settings.arguments;
 
     List<Complain> personsComplains = complains.where((comp) {
+      print(comp.username);
       if (username == null) {
-        return comp.username.toLowerCase() == "ahmet akıl" ? true : false;
+        return comp.username.toLowerCase() == "ahmet a.";
       } else
         return comp.username == username;
     }).toList();
@@ -93,7 +100,7 @@ class ProfileScreen extends StatelessWidget {
           )
         : Scaffold(
             appBar: AppBar(
-              title: Text('DestekVer'),
+              title: Text('Profilim'),
             ),
             body: buildScreen(
               personsComplains,

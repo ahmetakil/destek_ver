@@ -90,8 +90,10 @@ class _ComplainItemState extends State<ComplainItem> {
                     SizedBox(
                       height: 13,
                     ),
-                    Text(
-                      comp.complain,
+                    Flexible(
+                      child: Text(
+                        comp.complain,
+                      ),
                     )
                   ],
                 ),

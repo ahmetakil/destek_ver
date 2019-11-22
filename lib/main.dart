@@ -78,22 +78,7 @@ HAFTAYA:
 
 
     22 KASIM NOTLAR:
-    - + Anketler (text kısmı hariç) doldurulması doldurulmadan önce
-    gönder düğmesi olmayacak
-    - + Rating star altına yakın bi sarı
-    -  + Anketin içindeyken appbarda anket adı yazsın
-    - + Evet Hayır Bilgim yok boşlukları küçült
-    - New complain ekranında gbönderi maviden yeşil yap
-    - Yeni Şikayet yerine Şikayet Ekle yaz + Öneri Ekle
-    - Tüm şikayetler / cevaplananlar sadece kendi sekmelerinde olucak
-    indicator rengi tüm > siyah cevaplanan > amber çözülen > yeşil + yazı renkleri
 
-    - Details ekranında Park Sorunu başlık sola yaslanıcak Tarih en sağ üste
-    Resme padding + biraz aşağı indir
-    isim sansürleme Fatih Ö.
-
-    - Herkesin profili kendine
-    Profilim appbar için
 
     ZAMAN KALIRSA : PROFIL EKRANINDA DA SEKMELER
     YILDIZ SAĞA GEÇSİH PROFİDLE

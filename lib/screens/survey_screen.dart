@@ -14,6 +14,7 @@ class SurveyScreen extends StatefulWidget {
 class _SurveyScreenState extends State<SurveyScreen> {
   List<Map<String, QuestionAnswer>> answerToQuestions;
   bool isButtonEnabled = false;
+
   void findChoice() {
     final int typeOfSurvey = ModalRoute.of(context).settings.arguments as int;
     String survey = SURVEY_TYPES[typeOfSurvey];
@@ -42,10 +43,17 @@ class _SurveyScreenState extends State<SurveyScreen> {
               : "Lütfen tüm soruları cevaplandırınız"),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("Geri dön"),
+            FlatButton(
+              child: Text(
+                allQuestionsAnswered ? "Anasayfaya Dön" : "Geri dön",
+              ),
               onPressed: () {
-                Navigator.of(context).pop();
+                if (allQuestionsAnswered) {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                } else {
+                  Navigator.of(context).pop();
+                }
               },
             ),
           ],
@@ -88,12 +96,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
           print(allQuestionsAnswered());
           if (allQuestionsAnswered()) {
             _showDialog(allQuestionsAnswered());
-            Future.delayed(const Duration(milliseconds: 1000), () {
-              setState(() {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
-              });
-            });
           } else {
             _showDialog(allQuestionsAnswered());
           }

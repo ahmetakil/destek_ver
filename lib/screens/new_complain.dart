@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:DestekVer/provider/complains_provider.dart';
 import 'package:DestekVer/provider/location_provider.dart';
+import 'package:DestekVer/services/locator.dart';
+import 'package:DestekVer/services/page_service.dart';
 import 'package:DestekVer/widget/location_input.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +38,6 @@ class _NewComplainState extends State<NewComplain> {
         .child('complain-photos/${Path.basename(_pickedImage.path)}}');
     StorageUploadTask uploadTask = storageReference.putFile(_pickedImage);
     await uploadTask.onComplete;
-    print('File Uploaded');
     setState(() {
       loading = true;
     });
@@ -78,9 +79,9 @@ class _NewComplainState extends State<NewComplain> {
       ));
       return;
     }
-    if(hasImage && !loading || !hasImage) {
+    if((hasImage && !loading) || !hasImage) {
       Provider.of<ComplainsProvider>(context, listen: false).addNewComplain(
-        username: 'Ahmet Akıl',
+        username: 'Ahmet A.',
         complainTopic: _complainTopicController.text,
         complain: _complainController.text,
         location: loc,
@@ -88,7 +89,8 @@ class _NewComplainState extends State<NewComplain> {
         imageUrl: _imageUrl,
       );
       locationProvider.location = null;
-      Navigator.of(context).pushReplacementNamed('/');
+      locator<PageService>().setPage(0);
+      Navigator.of(context).pushReplacementNamed("/");
     }
   }
 
@@ -132,7 +134,7 @@ class _NewComplainState extends State<NewComplain> {
                         }
                         return null;
                       },
-                      maxLength: 200,
+                      maxLength: 280,
                       decoration: InputDecoration(
                         labelText: 'Şikayet',
                         border: OutlineInputBorder(
@@ -190,7 +192,7 @@ class _NewComplainState extends State<NewComplain> {
                           ),
                           Container(
                             child: RaisedButton(
-                              color: Colors.blue[400],
+                              color: Colors.green,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),

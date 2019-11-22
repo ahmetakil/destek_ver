@@ -51,7 +51,7 @@ class _TabsScreenState extends State<TabsScreen> {
                       ),
                       context: context,
                       builder: (BuildContext ctx) => Container(
-                            height: MediaQuery.of(context).size.height * 0.5,
+                            height: MediaQuery.of(context).size.height * 0.3,
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Column(
@@ -91,7 +91,7 @@ class _TabsScreenState extends State<TabsScreen> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 14,
+                                    height: 20,
                                   ),
                                   Row(
                                     children: <Widget>[
@@ -104,7 +104,7 @@ class _TabsScreenState extends State<TabsScreen> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 14,
+                                    height: 20,
                                   ),
                                   Row(
                                     children: <Widget>[
@@ -115,7 +115,7 @@ class _TabsScreenState extends State<TabsScreen> {
                                         style: TextStyle(fontSize: 16),
                                       ),
                                       SizedBox(
-                                        height: 14,
+                                        height: 20,
                                       ),
                                     ],
                                   ),
