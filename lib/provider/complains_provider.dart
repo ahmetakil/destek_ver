@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:DestekVer/models/complain.dart';
 import 'package:DestekVer/util/location_util.dart';
-import 'package:firebase_storage_image/firebase_storage_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 

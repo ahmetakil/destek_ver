@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../models/complain.dart';
-import '../screens/profile_screen.dart';
 
 class ComplainDetailScreenItem extends StatefulWidget {
   final Complain comp;
@@ -16,7 +15,6 @@ class ComplainDetailScreenItem extends StatefulWidget {
 }
 
 class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -93,14 +91,18 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 if (widget.comp.imageUrl != null)
                   Container(
                     padding: EdgeInsets.all(8),
                     width: double.infinity,
                     height: 250,
-                    child: Image.network(widget.comp.imageUrl,
-                    fit: BoxFit.cover,),
+                    child: Image.network(
+                      widget.comp.imageUrl,
+                      fit: BoxFit.cover,
+                    ),
                   ),
               ],
             ),
@@ -149,11 +151,8 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                 padding: const EdgeInsets.all(10),
                 child: InkWell(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    fullscreenDialog: true,
-                    builder: (_) => MapScreen(
-                      widget.comp.location
-                    )
-                  )),
+                      fullscreenDialog: true,
+                      builder: (_) => MapScreen(widget.comp.location))),
                   child: Text(
                     widget.comp.fullAddress,
                     textAlign: TextAlign.right,

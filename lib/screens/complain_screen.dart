@@ -1,5 +1,6 @@
 import 'package:DestekVer/provider/complains_provider.dart';
 import 'package:DestekVer/screens/new_complain.dart';
+import 'package:DestekVer/util/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,16 +41,38 @@ class ComplainScreen extends StatelessWidget {
       );
     }
 
-
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: TabBar(
           indicatorColor: Colors.green,
           tabs: <Widget>[
-            Tab(child: Text("Tüm Şikayetler",style: TextStyle(color: Colors.black),),),
-            Tab(child: Text('Cevaplananlar',style: TextStyle(color: Colors.yellow[900]),)),
-            Tab(child: Text("Çözülenler",style: TextStyle(color: Color(0xff00681D)),),),
+            Tab(
+              child: Text(
+                "Tüm Şikayetler",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: screenSize(12.5, context),
+                ),
+              ),
+            ),
+            Tab(
+                child: Text(
+              'Cevaplananlar',
+              style: TextStyle(
+                color: Colors.yellow[900],
+                fontSize: screenSize(12.5, context),
+              ),
+            )),
+            Tab(
+              child: Text(
+                "Çözülenler",
+                style: TextStyle(
+                  color: Color(0xff00681D),
+                  fontSize: screenSize(12.5, context),
+                ),
+              ),
+            ),
           ],
         ),
         body: TabBarView(
