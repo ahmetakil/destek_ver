@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "916195499796",
+    "firebase_url": "https://destekver-e1da1.firebaseio.com",
+    "project_id": "destekver-e1da1",
+    "storage_bucket": "destekver-e1da1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916195499796:android:7e8f0a85c4673caf8bec01",
+        "android_client_info": {
+          "package_name": "me.ahmetakil.destekver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916195499796-te5eucpt5b30i1pu5vn2rv2h223kb4lt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbR0g1VhuPo_ef6D1S4heeIyAPR4VGTbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "916195499796-te5eucpt5b30i1pu5vn2rv2h223kb4lt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
