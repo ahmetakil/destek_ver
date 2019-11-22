@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../models/complain.dart';
+import '../screens/profile_screen.dart';
 
 class ComplainDetailScreenItem extends StatefulWidget {
   final Complain comp;
@@ -76,39 +77,71 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
             ],
           ),
         ),
-        SingleChildScrollView(
-          child: Container(
-            width: double.infinity,
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(8.0),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    widget.comp.complain,
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                if (widget.comp.imageUrl != null)
+        Expanded(
+          child: SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              child: Column(
+                children: <Widget>[
                   Container(
-                    padding: EdgeInsets.all(8),
-                    width: double.infinity,
-                    height: 250,
-                    child: Image.network(
-                      widget.comp.imageUrl,
-                      fit: BoxFit.cover,
+                    padding: const EdgeInsets.all(8.0),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      widget.comp.complain,
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
                   ),
-              ],
+                  SizedBox(
+                    height: 20,
+                  ),
+                  if (widget.comp.imageUrl != null)
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      width: double.infinity,
+                      height: 250,
+                      child: Image.network(
+                        widget.comp.imageUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  if (widget.comp.replied)
+                    Container(
+                      padding: EdgeInsets.all(6),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Belediyenin Cevabı : ",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: widget.comp.solved
+                                ? Colors.green
+                                : Colors.amber[800]),
+                      ),
+                    ),
+                  if (widget.comp.replied && !widget.comp.solved)
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        "Merhaba, Şikayetiniz ilgili birim tarafından işleme alınmış olup çözüm süreci başlatılmıştır. Sizi bu süreçteki gelişmelerden haberdar ediyor olacağız. Konuyla ilgili hassasiyetiniz için teşekkür ederiz.",
+                        style:
+                            TextStyle(color: Colors.amber[800], fontSize: 16),
+                      ),
+                    ),
+                  if (widget.comp.solved)
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        "Merhaba, Şikayetiniz üzerine başlatılan süreç tamamlanmış olup şikayetiniz çözüme ulaştırılmıştır. Çözümü değerlendirmek için memnuniyet anketimize katılabilir, başka bir sorun iletmek için yeni bir şikayet oluşturabilirsiniz. Konuyla ilgili hassasiyetiniz için teşekkür ederiz.",
+                        style:
+                            TextStyle(color: Colors.green, fontSize: 16),
+                      ),
+                    )
+                ],
+              ),
             ),
           ),
         ),
-        Spacer(),
         Divider(
           thickness: 0.2,
           color: Colors.grey,

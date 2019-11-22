@@ -102,7 +102,7 @@ class ProfileScreen extends StatelessWidget {
               tabs: <Widget>[
                 Tab(
                   child: Text(
-                    "Tüm Şikayetler",
+                    "Şikayetler",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: screenSize(12.5, context),
@@ -119,7 +119,7 @@ class ProfileScreen extends StatelessWidget {
                 )),
                 Tab(
                   child: Text(
-                    "Çözülenler",
+                    "Çözümlenenler",
                     style: TextStyle(
                       color: Color(0xff00681D),
                       fontSize: screenSize(12.5, context),
