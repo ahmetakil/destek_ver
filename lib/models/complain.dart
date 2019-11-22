@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -13,6 +15,7 @@ class Complain {
   bool upvoted;
   bool replied;
   bool solved;
+  String imageUrl;
 
   Complain({
     @required this.username,
@@ -26,5 +29,6 @@ class Complain {
     this.upvoted = false,
     this.replied = false,
     this.solved = false,
+    this.imageUrl
   });
 }

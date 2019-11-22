@@ -8,11 +8,10 @@ class MapScreen extends StatefulWidget {
   final LatLng _initialLocation;
   final bool selectMode;
 
-  MapScreen(this._initialLocation,[this.selectMode = false]);
+  MapScreen(this._initialLocation, [this.selectMode = false]);
 }
 
 class _MapScreenState extends State<MapScreen> {
-
   LatLng _pickedLocation;
 
   @override
@@ -21,7 +20,7 @@ class _MapScreenState extends State<MapScreen> {
     super.initState();
   }
 
-  void pickLocation(LatLng newLocation){
+  void pickLocation(LatLng newLocation) {
     setState(() {
       _pickedLocation = newLocation;
     });
@@ -31,29 +30,34 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Haritadan Seç"),
+        title: Text(
+          widget.selectMode ? "Haritadan Seç" : "Haritada Görüntüle",
+        ),
         actions: <Widget>[
+          if(widget.selectMode)
           IconButton(
             icon: Icon(Icons.check),
-            onPressed: _pickedLocation == null ? null :() {
-              Navigator.of(context).pop(_pickedLocation);
-            },
+            onPressed: _pickedLocation == null
+                ? null
+                : () {
+                    Navigator.of(context).pop(_pickedLocation);
+                  },
           )
         ],
       ),
-    body: GoogleMap(
-      onTap: widget.selectMode ? pickLocation : null,
-      markers: {
-        Marker(
-          markerId: MarkerId("A"),
-          position: _pickedLocation,
+      body: GoogleMap(
+        onTap: widget.selectMode ? pickLocation : null,
+        markers: {
+          Marker(
+            markerId: MarkerId("A"),
+            position: _pickedLocation,
+          ),
+        },
+        initialCameraPosition: CameraPosition(
+          target: widget._initialLocation,
+          zoom: 16,
         ),
-      },
-      initialCameraPosition: CameraPosition(
-        target: widget._initialLocation,
-        zoom: 16,
       ),
-    ),
     );
   }
 }

@@ -162,7 +162,6 @@ class _SurveyItemState extends State<SurveyItem> {
         labelText: 'Lütfen önerinizi kısa bir şekilde belirtiniz',
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
       ),
-      onChanged: (String newString) => _inputController.text = newString,
       onSubmitted: (_) => questionAnswer.inputFromUser = _inputController.text,
       maxLength: 100,
     );

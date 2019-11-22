@@ -15,7 +15,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
   List<Map<String, QuestionAnswer>> answerToQuestions;
 
   void findChoice() {
-    final int typeOfSurvey = ModalRoute.of(context).settings.arguments as int;
+    final int typeOfSurvey = ModalRoute
+        .of(context)
+        .settings
+        .arguments as int;
     String survey = SURVEY_TYPES[typeOfSurvey];
     List<String> questions = QUESTIONS[survey];
 
@@ -23,8 +26,8 @@ class _SurveyScreenState extends State<SurveyScreen> {
       ANSWERS[question].map((answer) {
         return answer.selected
             ? [
-                {question: answer}
-              ]
+          {question: answer}
+        ]
             : null;
       });
     }).toList();
@@ -36,9 +39,13 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final int typeOfSurvey = ModalRoute.of(context).settings.arguments as int;
+    final int typeOfSurvey = ModalRoute
+        .of(context)
+        .settings
+        .arguments as int;
     String survey = SURVEY_TYPES[typeOfSurvey];
     List<String> questions = QUESTIONS[survey];
+
     return Scaffold(
       floatingActionButton: RaisedButton(
         shape: RoundedRectangleBorder(
@@ -46,6 +53,23 @@ class _SurveyScreenState extends State<SurveyScreen> {
         ),
         onPressed: () {
           findChoice();
+          showDialog(
+              context: context,
+              builder: (_) =>
+                  AlertDialog(
+                    title: Text("Anket Tamamlandı !"),
+                    content: Text(
+                        "Anketi tamamlandığınız için teşekkür ederiz."),
+                    actions: <Widget>[
+                      RaisedButton(
+                        child: Text("Geri Dön"),
+                        onPressed: ()  {
+                          Navigator.of(context).pop();
+                        },
+                      )
+                    ],
+                  )
+          );
           Navigator.of(context).pop();
         },
         child: Container(

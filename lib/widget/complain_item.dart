@@ -35,8 +35,8 @@ class _ComplainItemState extends State<ComplainItem> {
     Complain comp = widget.complain;
     Color statusOfComplain;
     statusOfComplain = comp.solved
-        ? Colors.green
-        : comp.replied ? Colors.greenAccent : Colors.white;
+        ? Colors.green[800]
+        : comp.replied ? Colors.amber[400] : Colors.white;
     return Container(
       padding: EdgeInsets.all(6),
       child: Card(
@@ -44,6 +44,7 @@ class _ComplainItemState extends State<ComplainItem> {
           borderRadius: BorderRadius.circular(10),
           side: BorderSide(
             color: statusOfComplain,
+            width: 2
           ),
         ),
         margin: EdgeInsets.all(10),

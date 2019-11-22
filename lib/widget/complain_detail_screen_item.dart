@@ -1,3 +1,4 @@
+import 'package:DestekVer/screens/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -6,6 +7,7 @@ import '../screens/profile_screen.dart';
 
 class ComplainDetailScreenItem extends StatefulWidget {
   final Complain comp;
+
   ComplainDetailScreenItem(this.comp);
 
   @override
@@ -29,7 +31,7 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
           height: 10,
         ),
         Container(
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           margin: EdgeInsets.all(10),
           child: Text(
             widget.comp.complainTopic,
@@ -82,19 +84,26 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
           ),
         ),
         SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(10),
-            alignment: Alignment.topLeft,
-            height: 400,
-            //Fotoğraf olursa buraya gelicek
-            child: Text(
-              widget.comp.complain,
-              style: TextStyle(
-                fontSize: 18,
+          child: Column(
+            children: <Widget>[
+              Text(
+                widget.comp.complain,
+                style: TextStyle(
+                  fontSize: 18,
+                ),
               ),
-            ),
+              SizedBox(height: 20,),
+              if (widget.comp.imageUrl != null)
+                Container(
+                  width: double.infinity,
+                  height: 250,
+                  child: Image.network(widget.comp.imageUrl,
+                  fit: BoxFit.cover,),
+                ),
+            ],
           ),
         ),
+        Spacer(),
         Divider(
           thickness: 0.2,
           color: Colors.grey,
@@ -121,7 +130,9 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
                     },
                   ),
                 ),
-                SizedBox(width: 7,),
+                SizedBox(
+                  width: 7,
+                ),
                 Text(
                   widget.comp.upVote.toString(),
                   style: TextStyle(
@@ -133,13 +144,21 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
             Flexible(
               child: Padding(
                 padding: const EdgeInsets.all(4),
-                child: Text(
-                  widget.comp.fullAddress,
-                  textAlign: TextAlign.right,
-                  softWrap: true,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                child: InkWell(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    fullscreenDialog: true,
+                    builder: (_) => MapScreen(
+                      widget.comp.location
+                    )
+                  )),
+                  child: Text(
+                    widget.comp.fullAddress,
+                    textAlign: TextAlign.right,
+                    softWrap: true,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

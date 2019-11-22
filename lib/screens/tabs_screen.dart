@@ -1,3 +1,5 @@
+import 'package:DestekVer/services/locator.dart';
+import 'package:DestekVer/services/page_service.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +17,6 @@ class TabsScreen extends StatefulWidget {
 class _TabsScreenState extends State<TabsScreen> {
   final navKey = GlobalKey();
 
-  int _selectedPage = 0;
-
   final List<Widget> _pages = [
     ComplainScreen(),
     SurveySelectScreen(),
@@ -26,17 +26,21 @@ class _TabsScreenState extends State<TabsScreen> {
   ];
 
   Widget getBody() {
-    return _pages[_selectedPage];
+    return _pages[locator<PageService>().selectedPage];
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final pageService = locator<PageService>();
+
     return DefaultTabController(
       length: _pages.length,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('DestekVer'),
+          title: Text(pageService.appBarTitles[pageService.selectedPage]),
         ),
+        drawer: locator<PageService>().selectedPage == 0 ? Drawer() : null,
         body: getBody(),
         bottomNavigationBar: CurvedNavigationBar(
           key: navKey,
@@ -68,7 +72,7 @@ class _TabsScreenState extends State<TabsScreen> {
           ],
           onTap: (int selectedPage) {
             setState(() {
-              _selectedPage = selectedPage;
+              locator<PageService>().setPage(selectedPage);
             });
           },
         ),

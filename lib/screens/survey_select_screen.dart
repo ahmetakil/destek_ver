@@ -24,7 +24,7 @@ class SurveySelectScreen extends StatelessWidget {
             );
           },
           child: Container(
-            height: 45,
+            height: 50,
             margin: const EdgeInsets.all(10),
             alignment: Alignment.centerLeft,
             width: 300,
@@ -37,6 +37,7 @@ class SurveySelectScreen extends StatelessWidget {
               child: Text(
                 surveys[0],
                 style: TextStyle(
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -54,7 +55,7 @@ class SurveySelectScreen extends StatelessWidget {
             );
           },
           child: Container(
-            height: 45,
+            height: 50,
             margin: const EdgeInsets.all(10),
             alignment: Alignment.centerLeft,
             width: 300,
@@ -67,6 +68,7 @@ class SurveySelectScreen extends StatelessWidget {
               child: Text(
                 surveys[1],
                 style: TextStyle(
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),

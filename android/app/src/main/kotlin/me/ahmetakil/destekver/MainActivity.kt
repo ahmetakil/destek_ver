@@ -1,4 +1,4 @@
-package com.example.demo_app1
+package me.ahmetakil.destekver
 
 import android.os.Bundle
 

@@ -1,4 +1,5 @@
 import 'package:DestekVer/provider/location_provider.dart';
+import 'package:DestekVer/services/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +10,10 @@ import './provider/complains_provider.dart';
 import './screens/profile_screen.dart';
 import './screens/survey_screen.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  setupLocator();
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
