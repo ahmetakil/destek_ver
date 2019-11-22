@@ -21,6 +21,7 @@ class _SuggestionsScreenState extends State<SuggestionsScreen> {
     if (!_formKey.currentState.validate()) {
       return;
     }
+
     setState(() {
       _formKey.currentState.reset();
     });
