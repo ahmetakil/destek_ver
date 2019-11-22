@@ -17,8 +17,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -42,7 +40,7 @@ class _MyAppState extends State<MyApp> {
           NewComplain.routeName: (ctx) => NewComplain(),
           ComplainDetailScreen.routeName: (ctx) => ComplainDetailScreen(),
           ProfileScreen.routeName: (ctx) => ProfileScreen(),
-          SurveyScreen.routeName : (ctx) => SurveyScreen()
+          SurveyScreen.routeName: (ctx) => SurveyScreen(),
         },
       ),
     );

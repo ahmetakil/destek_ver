@@ -2,6 +2,7 @@ import 'package:DestekVer/models/question_answer.dart';
 import 'package:DestekVer/widget/survey_item.dart';
 import 'package:flutter/material.dart';
 import '../data/dummy_data.dart';
+import '../util/utils.dart';
 
 class SurveyScreen extends StatefulWidget {
   static const routeName = '/surveyScreen';
@@ -39,16 +40,35 @@ class _SurveyScreenState extends State<SurveyScreen> {
     String survey = SURVEY_TYPES[typeOfSurvey];
     List<String> questions = QUESTIONS[survey];
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: RaisedButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
         onPressed: () {
           findChoice();
           Navigator.of(context).pop();
         },
-        child: Icon(
-          Icons.check,
-          color: Colors.white,
+        child: Container(
+          width: screenSize(75, context),
+          child: Row(
+            children: <Widget>[
+              Icon(
+                Icons.send,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Gönder',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
         ),
-        backgroundColor: Colors.green,
+        color: Colors.green,
       ),
       appBar: AppBar(
         title: Text('DestekVer'),

@@ -6,7 +6,6 @@ import '../screens/profile_screen.dart';
 import '../screens/complain_detail_screen.dart';
 import '../util/utils.dart';
 
-
 class ComplainItem extends StatefulWidget {
   final Complain complain;
 
@@ -34,11 +33,18 @@ class _ComplainItemState extends State<ComplainItem> {
   @override
   Widget build(BuildContext context) {
     Complain comp = widget.complain;
+    Color statusOfComplain;
+    statusOfComplain = comp.solved
+        ? Colors.green
+        : comp.replied ? Colors.greenAccent : Colors.white;
     return Container(
       padding: EdgeInsets.all(6),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
+          side: BorderSide(
+            color: statusOfComplain,
+          ),
         ),
         margin: EdgeInsets.all(10),
         elevation: 6,
@@ -128,7 +134,7 @@ class _ComplainItemState extends State<ComplainItem> {
                       fit: FlexFit.tight,
                       flex: 1,
                       child: Text(
-                        comp.shortAddress??"NULL",
+                        comp.shortAddress ?? "NULL",
                         textAlign: TextAlign.right,
                         softWrap: true,
                         overflow: TextOverflow.fade,

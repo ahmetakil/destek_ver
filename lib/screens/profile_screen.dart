@@ -74,14 +74,13 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Complain> complains =
         Provider.of<ComplainsProvider>(context).allComplains;
-     String username = ModalRoute.of(context).settings.arguments;
-    print("TUM : ${complains}");
-    print("PROFIL ADI ${username}");
+    String username = ModalRoute.of(context).settings.arguments;
+
     List<Complain> personsComplains = complains.where((comp) {
-      if(username == null){
-        username =  "Ahmet Akıl";
-      }
-      return comp.username == username;
+      if (username == null) {
+        return comp.username.toLowerCase() == "ahmet akıl" ? true : false;
+      } else
+        return comp.username == username;
     }).toList();
 
     return username == null
@@ -91,6 +90,9 @@ class ProfileScreen extends StatelessWidget {
             context,
           )
         : Scaffold(
+            appBar: AppBar(
+              title: Text('DestekVer'),
+            ),
             body: buildScreen(
               personsComplains,
               username,

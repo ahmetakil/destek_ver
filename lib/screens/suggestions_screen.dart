@@ -1,16 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SuggestionsScreen extends StatelessWidget {
+class SuggestionsScreen extends StatefulWidget {
+  static const routeName = '/SuggestionScreen';
+
+  @override
+  _SuggestionsScreenState createState() => _SuggestionsScreenState();
+}
+
+class _SuggestionsScreenState extends State<SuggestionsScreen> {
   final _complainTopicController = TextEditingController();
+
   final _complainController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
+
+  final snackbar = SnackBar(
+    content: Text('Öneriniz belediyenize iletildi'),
+  );
 
   void _submitData(BuildContext context) {
     if (!_formKey.currentState.validate()) {
       return;
     }
-    Navigator.of(context).pushReplacementNamed('/');
+    Scaffold.of(context).showSnackBar(snackbar);
+    setState(() {
+      _formKey.currentState.reset();
+    });
   }
 
   @override
@@ -27,7 +43,7 @@ class SuggestionsScreen extends StatelessWidget {
                   TextFormField(
                     validator: (String value) {
                       if (value.isEmpty) {
-                        return "Lütfen Konuyu Belirtin";
+                        return "Lütfen Önerinizin Konusunu Belirtin";
                       } else if (value.length < 3) {
                         return "Konu en az 4 karakter olmalıdır";
                       } else {
@@ -35,13 +51,15 @@ class SuggestionsScreen extends StatelessWidget {
                       }
                     },
                     decoration: InputDecoration(
-                      labelText: 'Konu',
+                      labelText: 'Önerinin Konusu',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     controller: _complainTopicController,
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(
+                    height: 30,
+                  ),
                   TextFormField(
                     validator: (String value) {
                       if (value.isEmpty) {

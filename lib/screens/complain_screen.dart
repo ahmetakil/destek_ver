@@ -51,15 +51,11 @@ class ComplainScreen extends StatelessWidget {
             Tab(text: 'Çözülenler'),
           ],
         ),
-        body: Stack(
+        body: TabBarView(
           children: <Widget>[
-            TabBarView(
-              children: <Widget>[
-                ComplainList(0),
-                ComplainList(1),
-                ComplainList(2),
-              ],
-            ),
+            ComplainList(0),
+            ComplainList(1),
+            ComplainList(2),
           ],
         ),
       ),

@@ -24,7 +24,7 @@ class ComplainsProvider with ChangeNotifier {
       shortAddress: "Osmanağa mah. Kadiköy/Istanbul",
       dateTime: DateTime.now(),
       replied: true,
-      upVote: 7,
+      upVote: 8,
     ),
     Complain(
       username: 'Fatih Emin Öge',
@@ -36,7 +36,7 @@ class ComplainsProvider with ChangeNotifier {
       dateTime: DateTime.now(),
       replied: true,
       solved: true,
-      upVote: 7,
+      upVote: 24
     ),
   ];
 

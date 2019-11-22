@@ -154,6 +154,20 @@ class _SurveyItemState extends State<SurveyItem> {
     );
   }
 
+  Widget buildInputTaker(QuestionAnswer questionAnswer) {
+    final _inputController = TextEditingController();
+
+    return TextField(
+      decoration: InputDecoration(
+        labelText: 'Lütfen önerinizi kısa bir şekilde belirtiniz',
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+      ),
+      onChanged: (String newString) => _inputController.text = newString,
+      onSubmitted: (_) => questionAnswer.inputFromUser = _inputController.text,
+      maxLength: 100,
+    );
+  }
+
   Widget buildQuestion(String question, Widget widget) {
     return Container(
       width: double.infinity,
@@ -179,20 +193,6 @@ class _SurveyItemState extends State<SurveyItem> {
           widget
         ],
       ),
-    );
-  }
-
-  Widget buildInputTaker(QuestionAnswer questionAnswer) {
-    final _inputController = TextEditingController();
-
-    return TextField(
-      decoration: InputDecoration(
-        labelText: 'Lütfen önerinizi kısa bir şekilde belirtiniz',
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-      ),
-      onChanged: (String newString) => _inputController.text = newString,
-      onSubmitted: (_) => questionAnswer.inputFromUser = _inputController.text,
-      maxLength: 100,
     );
   }
 
