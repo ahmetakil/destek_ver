@@ -30,8 +30,7 @@ Map<String, List<QuestionAnswer>> ANSWERS = {
     ),
     QuestionAnswer(
       imageUrl:
-          //'https://lh3.googleusercontent.com/XCm7WI7HwkNso9hrdCpQuDkwAw2Y_oMMUUPG8eEmY5y4votLM6hYNIzSJE-GfjJBserfxak=s170',
-      "https://iasbh.tmgrup.com.tr/7fa563/800/420/0/0/660/345?u=https://isbh.tmgrup.com.tr/sbh/2018/09/29/istanbulda-kosu-yapilacak-en-iyi-yerler-istanbul-kosu-parkuru-yerleri-1538207897481.jpg",
+          'https://upload.wikimedia.org/wikipedia/commons/1/11/People%27s-Park.jpg',
       selected: false,
       choice: 'B)',
       image: true,
@@ -168,7 +167,7 @@ Map<String, List<QuestionAnswer>> ANSWERS = {
   // ],
   'Yaşadığınız mahalledeki sokak hayvanlarından ne kadar rahatsızsınız?': [
     QuestionAnswer(
-      answer: '1:Çok Rahatsızım , 5:Hiç Rahatsız Değilim',
+      answer: '1: Çok Rahatsızım , 5: Hiç Rahatsız Değilim',
       star: true,
     ),
   ],

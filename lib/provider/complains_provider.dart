@@ -18,7 +18,7 @@ class ComplainsProvider with ChangeNotifier {
       shortAddress: "Osmanağa mah. Kadiköy/Istanbul",
       dateTime: DateTime.now(),
       imageUrl: "https://firebasestorage.googleapis.com/v0/b/destekver-e1da1.appspot.com/o/complain-photos%2Fscaled_image_picker2194902650483126746.jpg%7D?alt=media&token=6c249535-7ef9-482f-b1b3-c3630da6bf62",
-      upVote: 7,
+      upVote: 8,
     ),
     Complain(
       username: 'Ahmet Akıl',
@@ -30,7 +30,7 @@ class ComplainsProvider with ChangeNotifier {
       shortAddress: "Osmanağa mah. Kadiköy/Istanbul",
       dateTime: DateTime.now(),
       replied: true,
-      upVote: 8,
+      upVote: 7,
     ),
     Complain(
       username: 'Fatih Emin Öge',
@@ -43,7 +43,7 @@ class ComplainsProvider with ChangeNotifier {
       dateTime: DateTime.now(),
       replied: true,
       solved: true,
-      upVote: 24
+      upVote: 2
     ),
   ];
 

@@ -73,7 +73,7 @@ class _SurveyItemState extends State<SurveyItem> {
                   child: Text(
                     '${answer.choice} ${answer.answer}',
                     style: TextStyle(
-                      color: answer.selected ? Colors.red : Colors.black,
+                      color: answer.selected ? Colors.amber[800] : Colors.black,
                       fontSize: 16,
                       fontWeight:
                           answer.selected ? FontWeight.bold : FontWeight.normal,
@@ -140,7 +140,7 @@ class _SurveyItemState extends State<SurveyItem> {
                     leading: Text(
                       '${answer.choice}  ${answer.answer == null ? "" : answer.answer}',
                       style: TextStyle(
-                        color: answer.selected ? Colors.red : Colors.white,
+                        color: answer.selected ? Colors.amber[800] : Colors.white,
                         fontSize: 13,
                       ),
                     ),

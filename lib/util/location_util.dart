@@ -31,6 +31,6 @@ class LocationUtil {
     List<GEO.Placemark> placemark = await GEO.Geolocator()
         .placemarkFromCoordinates(position.latitude, position.longitude);
 
-    return '${placemark[0].subLocality} mah. ${placemark[0].subAdministrativeArea}/${placemark[0].administrativeArea}';
+    return '${placemark[0].subLocality} Mah. ${placemark[0].subAdministrativeArea}/${placemark[0].administrativeArea}';
   }
 }

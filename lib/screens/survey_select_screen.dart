@@ -4,7 +4,7 @@ import '../screens/survey_screen.dart';
 
 class SurveySelectScreen extends StatelessWidget {
   final List<String> surveys = [
-    'Park Ve Bahçeler',
+    'Park ve Bahçeler',
     'Sokak Hayvanları',
   ];
 

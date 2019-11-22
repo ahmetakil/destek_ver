@@ -82,11 +82,15 @@ class _SuggestionsScreenState extends State<SuggestionsScreen> {
                     height: 20,
                   ),
                   RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     onPressed: () {
                       _submitData(context);
                     },
                     color: Colors.green,
                     child: Container(
+                      height: 50,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -94,6 +98,7 @@ class _SuggestionsScreenState extends State<SuggestionsScreen> {
                           Text(
                             'Gönder',
                             style: TextStyle(
+                              fontSize: 20,
                               color: Colors.white,
                             ),
                           ),

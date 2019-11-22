@@ -25,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
               child: Text(
                 username,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 22,
                 ),
               ),
             ),
@@ -39,14 +39,16 @@ class ProfileScreen extends StatelessWidget {
                     Icon(
                       Icons.star,
                       color: Colors.yellow,
+                      size: 40,
                     ),
                     Icon(
                       Icons.star_border,
                       color: Colors.black87,
+                      size: 40,
                     )
                   ],
                 ),
-                Text(' 5'),
+                Text(' 5',style: TextStyle(fontSize: 28),),
               ],
             ),
           ],

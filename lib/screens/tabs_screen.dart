@@ -31,7 +31,6 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     final pageService = locator<PageService>();
 
     return DefaultTabController(
@@ -39,8 +38,95 @@ class _TabsScreenState extends State<TabsScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(pageService.appBarTitles[pageService.selectedPage]),
+          actions: <Widget>[
+            if (locator<PageService>().selectedPage == 0)
+              IconButton(
+                icon: Icon(Icons.filter_list),
+                onPressed: () {
+                  showModalBottomSheet(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20)),
+                      ),
+                      context: context,
+                      builder: (BuildContext ctx) => Container(
+                            height: MediaQuery.of(context).size.height * 0.5,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Spacer(
+                                        flex: 2,
+                                      ),
+                                      Text(
+                                        "Filtreler",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Spacer(),
+                                      FlatButton(
+                                        child: Text(
+                                          "UYGULA",
+                                          style: TextStyle(
+                                              color: Colors.amber[800]),
+                                        ),
+                                        onPressed: () {},
+                                      )
+                                    ],
+                                  ),
+                                  Divider(),
+                                  Row(
+                                    children: <Widget>[
+                                      Icon(Icons.alarm),
+                                      SizedBox(width: 7),
+                                      Text(
+                                        "Zamana göre Filtrele",
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 14,
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Icon(Icons.add_location),
+                                      SizedBox(width: 7),
+                                      Text(
+                                        "Konuma göre Filtrele",
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 14,
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Icon(Icons.filter_hdr),
+                                      SizedBox(width: 7),
+                                      Text(
+                                        "Müdürlüğe göre Filtrele",
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      SizedBox(
+                                        height: 14,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ));
+                },
+              )
+          ],
         ),
-        drawer: locator<PageService>().selectedPage == 0 ? Drawer() : null,
         body: getBody(),
         bottomNavigationBar: CurvedNavigationBar(
           key: navKey,
