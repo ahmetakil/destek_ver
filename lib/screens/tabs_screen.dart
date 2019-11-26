@@ -134,9 +134,12 @@ class _TabsScreenState extends State<TabsScreen> {
           color: Color.fromRGBO(76, 175, 80, 1),
           backgroundColor: Colors.transparent,
           items: <Widget>[
-            Icon(
-              Icons.message,
-              color: Colors.white,
+            Container(
+              child: Icon(
+                Icons.message,
+                size: 32,
+                color: Colors.white,
+              ),
             ),
             Icon(
               Icons.dehaze,

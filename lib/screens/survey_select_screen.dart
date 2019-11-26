@@ -42,7 +42,7 @@ class SurveySelectScreen extends StatelessWidget {
                     arguments: 1,
                   );
                 },
-                child: SurveyCard(name: surveys[1], reward: 4,imageName: "assets/hayvan.jpeg",time: "25 saniye",)),
+                child: SurveyCard(name: surveys[1], reward: 4,imageName: "assets/hayvan.png",time: "25 saniye",)),
           ],
         ),
       ),
@@ -94,7 +94,7 @@ class SurveyCard extends StatelessWidget {
                   imageName,
                   fit: BoxFit.cover,
                   width: 100,
-                  height: 80,
+                  height: 100,
                 )),
             Positioned(
               top: 5,

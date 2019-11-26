@@ -90,6 +90,7 @@ class _SurveyItemState extends State<SurveyItem> {
 
   Widget buildButtonWithImages(List<QuestionAnswer> questionAnswers) {
     return Container(
+      width: double.infinity,
       height: questionAnswers[0].answer == null
           ? questionAnswers.length * screenSize(80.0, context)
           : questionAnswers.length * screenSize(225.0, context),
@@ -171,7 +172,8 @@ class _SurveyItemState extends State<SurveyItem> {
 
   Widget buildQuestion(String question, Widget widget) {
     return Container(
-      width: double.infinity,
+      width: MediaQuery.of(context).size.width * 0.95,
+      margin: EdgeInsets.only(top:5),
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),

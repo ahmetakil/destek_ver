@@ -1,5 +1,6 @@
 import 'package:DestekVer/models/question_answer.dart';
 import 'package:DestekVer/widget/survey_item.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import '../data/dummy_data.dart';
 import '../util/utils.dart';
@@ -101,20 +102,25 @@ class _SurveyScreenState extends State<SurveyScreen> {
           }
         },
         child: Container(
-          width: screenSize(75, context),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Icon(
                 Icons.send,
                 color: Colors.white,
+                size: 20,
               ),
               SizedBox(
-                width: 10,
+                width: 8,
               ),
-              Text(
+              AutoSizeText(
                 'Gönder',
+                minFontSize: 10,
+                stepGranularity: 1,
+                maxLines: 1,
                 style: TextStyle(
                   color: Colors.white,
+                  fontSize: 14
                 ),
               ),
             ],
@@ -129,16 +135,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
-          return Column(
-            children: <Widget>[
-              SurveyItem(
-                questions[index],
-                ANSWERS[questions[index]],
-              ),
-              SizedBox(
-                height: 15,
-              )
-            ],
+          return SurveyItem(
+            questions[index],
+            ANSWERS[questions[index]],
           );
         },
         itemCount: questions.length,

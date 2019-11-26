@@ -1,6 +1,7 @@
 import 'package:DestekVer/provider/complains_provider.dart';
 import 'package:DestekVer/screens/new_complain.dart';
 import 'package:DestekVer/util/utils.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -48,8 +49,12 @@ class ComplainScreen extends StatelessWidget {
           indicatorColor: Colors.green,
           tabs: <Widget>[
             Tab(
-              child: Text(
-                "Yeniler",
+              child: AutoSizeText(
+                "Yeni Şikayetler",
+                textAlign: TextAlign.center,
+                minFontSize: 10,
+                maxLines: 2,
+                stepGranularity: 1,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: screenSize(12.5, context),
@@ -57,16 +62,22 @@ class ComplainScreen extends StatelessWidget {
               ),
             ),
             Tab(
-                child: Text(
+                child: AutoSizeText(
               'Cevaplananlar',
+              minFontSize: 10,
+              maxLines: 1,
+              stepGranularity: 1,
               style: TextStyle(
                 color: Colors.yellow[900],
                 fontSize: screenSize(12.5, context),
               ),
             )),
             Tab(
-              child: Text(
+              child: AutoSizeText(
                 "Çözülenler",
+                minFontSize: 10,
+                maxLines: 1,
+                stepGranularity: 1,
                 style: TextStyle(
                   color: Color(0xff00681D),
                   fontSize: screenSize(12.5, context),

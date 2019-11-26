@@ -20,10 +20,9 @@ class ProfileScreen extends StatelessWidget {
     List<Complain> filteredComplains = complains.where((comp) {
       if (all) {
         return true;
-      }else if (solved) {
+      } else if (solved) {
         return comp.solved;
-      }
-      else if (replied && !comp.solved) {
+      } else if (replied && !comp.solved) {
         return comp.replied;
       } else {
         return !comp.replied && !comp.solved;
@@ -106,13 +105,18 @@ class ProfileScreen extends StatelessWidget {
               indicatorColor: Colors.green,
               tabs: <Widget>[
                 Tab(
-                  child: Icon(Icons.star,color: Colors.amber,),
+                  child: Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
                 ),
                 Tab(
                   child: AutoSizeText(
                     "Yeniler",
                     textAlign: TextAlign.center,
+                    minFontSize: 10,
                     maxLines: 1,
+                    stepGranularity: 1,
                     style: TextStyle(
                       color: Colors.black,
                     ),
@@ -121,8 +125,9 @@ class ProfileScreen extends StatelessWidget {
                 Tab(
                     child: AutoSizeText(
                   'Cevaplananlar',
-                  overflow: TextOverflow.fade,
                   maxLines: 1,
+                  stepGranularity: 1,
+                  minFontSize: 10,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.yellow[900],
@@ -133,6 +138,8 @@ class ProfileScreen extends StatelessWidget {
                     "Çözülenler",
                     textAlign: TextAlign.center,
                     maxLines: 1,
+                    minFontSize: 10,
+                    stepGranularity: 1,
                     style: TextStyle(
                       color: Color(0xff00681D),
                       fontSize: screenSize(12, context),
@@ -143,9 +150,9 @@ class ProfileScreen extends StatelessWidget {
             ),
             body: TabBarView(
               children: <Widget>[
-                buildList(complains: complain,all:true),
+                buildList(complains: complain, all: true),
                 buildList(complains: complain, unresolved: true),
-                buildList(complains: complain, replied: true,solved: false),
+                buildList(complains: complain, replied: true, solved: false),
                 buildList(complains: complain, solved: true),
               ],
             ),

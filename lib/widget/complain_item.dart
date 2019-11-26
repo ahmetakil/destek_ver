@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -16,17 +17,10 @@ class ComplainItem extends StatefulWidget {
 }
 
 class _ComplainItemState extends State<ComplainItem> {
-  void selectComp(BuildContext context) {
+  void showDetails(BuildContext context) {
     Navigator.of(context).pushNamed(
       ComplainDetailScreen.routeName,
       arguments: widget.complain,
-    );
-  }
-
-  void goToProfile(BuildContext context) {
-    Navigator.of(context).pushNamed(
-      ProfileScreen.routeName,
-      arguments: widget.complain.username,
     );
   }
 
@@ -39,26 +33,26 @@ class _ComplainItemState extends State<ComplainItem> {
         : comp.replied ? Colors.amber[400] : Colors.white;
     return Container(
       padding: EdgeInsets.all(6),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          side: BorderSide(
-            color: statusOfComplain,
-            width: 2
+      child: InkWell(
+        onTap: () => showDetails(context),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+              color: statusOfComplain,
+              width: 2
+            ),
           ),
-        ),
-        margin: EdgeInsets.all(10),
-        elevation: 6,
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  InkWell(
-                    onTap: () => goToProfile(context),
-                    child: Row(
+          margin: EdgeInsets.all(8),
+          elevation: 6,
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(6),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
                       children: <Widget>[
                         Icon(Icons.account_circle),
                         SizedBox(
@@ -67,16 +61,13 @@ class _ComplainItemState extends State<ComplainItem> {
                         Text(comp.username),
                       ],
                     ),
-                  ),
-                  Text(DateFormat('dd/MM/yyyy').format(comp.dateTime)),
-                ],
+                    Text(DateFormat('dd/MM/yyyy').format(comp.dateTime)),
+                  ],
+                ),
               ),
-            ),
-            InkWell(
-              onTap: () => selectComp(context),
-              child: Container(
+              Container(
+                padding: EdgeInsets.only(left:10,right:10),
                 height: screenSize(100.0, context),
-                width: screenSize(280.0, context),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -88,12 +79,13 @@ class _ComplainItemState extends State<ComplainItem> {
                       ),
                     ),
                     SizedBox(
-                      height: 13,
+                      height: 8,
                     ),
                     Flexible(
-                      child: Text(
+                      child: AutoSizeText(
                         comp.complain,
-                        overflow: TextOverflow.fade,
+                        maxLines: 5,
+                        minFontSize: 13,
                         style: TextStyle(
                           fontSize: screenSize(12, context)
                         ),
@@ -102,56 +94,56 @@ class _ComplainItemState extends State<ComplainItem> {
                   ],
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            if (comp.upvoted) {
-                              comp.upVote--;
-                              comp.upvoted = false;
-                            } else {
-                              comp.upVote++;
-                              comp.upvoted = true;
-                            }
-                          });
-                        },
-                        child: Row(
-                          children: <Widget>[
-                            comp.upvoted
-                                ? Icon(Icons.check, color: Colors.green)
-                                : Icon(Icons.check),
-                            Text(comp.upVote.toString()),
-                          ],
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              if (comp.upvoted) {
+                                comp.upVote--;
+                                comp.upvoted = false;
+                              } else {
+                                comp.upVote++;
+                                comp.upvoted = true;
+                              }
+                            });
+                          },
+                          child: Row(
+                            children: <Widget>[
+                              comp.upvoted
+                                  ? Icon(Icons.check, color: Colors.green)
+                                  : Icon(Icons.check),
+                              Text(comp.upVote.toString()),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        )
+                      ],
+                    ),
+                    Container(
+                      child: Flexible(
+                        fit: FlexFit.tight,
+                        flex: 1,
+                        child: Text(
+                          comp.shortAddress ?? "NULL",
+                          textAlign: TextAlign.right,
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      )
-                    ],
-                  ),
-                  Container(
-                    child: Flexible(
-                      fit: FlexFit.tight,
-                      flex: 1,
-                      child: Text(
-                        comp.shortAddress ?? "NULL",
-                        textAlign: TextAlign.right,
-                        softWrap: true,
-                        overflow: TextOverflow.fade,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
