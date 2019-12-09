@@ -1,6 +1,6 @@
 import 'package:DestekVer/services/locator.dart';
 import 'package:DestekVer/services/page_service.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:DestekVer/util/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/suggestions_screen.dart';
@@ -129,34 +129,36 @@ class _TabsScreenState extends State<TabsScreen> {
         ),
         body: getBody(),
         bottomNavigationBar: CurvedNavigationBar(
+          height: 60,
           key: navKey,
           animationDuration: Duration(milliseconds: 200),
           color: Color.fromRGBO(76, 175, 80, 1),
           backgroundColor: Colors.transparent,
           items: <Widget>[
-            Container(
-              child: Icon(
-                Icons.message,
-                size: 32,
-                color: Colors.white,
-              ),
+            Icon(
+              Icons.message,
+              size: 35,
+              color: Colors.white,
             ),
             Icon(
               Icons.dehaze,
               color: Colors.white,
+              size: 35,
             ),
             Icon(
               Icons.edit,
-              size: 32,
+              size: 40,
               color: Colors.white,
             ),
             Icon(
               Icons.chat_bubble_outline,
               color: Colors.white,
+              size: 35,
             ),
             Icon(
               Icons.person,
               color: Colors.white,
+              size: 35,
             ),
           ],
           onTap: (int selectedPage) {

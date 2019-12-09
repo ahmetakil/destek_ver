@@ -85,7 +85,7 @@ class _ComplainItemState extends State<ComplainItem> {
                       child: AutoSizeText(
                         comp.complain,
                         maxLines: 5,
-                        minFontSize: 13,
+                        minFontSize: 12,
                         style: TextStyle(
                           fontSize: screenSize(12, context)
                         ),
@@ -113,12 +113,26 @@ class _ComplainItemState extends State<ComplainItem> {
                               }
                             });
                           },
-                          child: Row(
+                          child: comp.solved ? RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: "${comp.upVote}",
+                                    style: TextStyle(color: Colors.green,fontSize: 16,fontWeight: FontWeight.bold)
+                                  ),
+                                  TextSpan(
+                                    text: " destekle sorun çözüldü",style: TextStyle(color: Colors.blueGrey,fontSize: 14)
+                                  ),
+                                ]
+                              )
+                          ) : Row(
                             children: <Widget>[
                               comp.upvoted
-                                  ? Icon(Icons.check, color: Colors.green)
-                                  : Icon(Icons.check),
-                              Text(comp.upVote.toString()),
+                                  ? Icon(Icons.check, color: Colors.green,size: 26,)
+                                  : Icon(Icons.check,size: 26,),
+                              Text(comp.upVote.toString(),style: TextStyle(
+                                color: comp.upvoted ? Colors.green : Colors.black
+                              ),),
                             ],
                           ),
                         ),

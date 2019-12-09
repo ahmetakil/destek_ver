@@ -93,7 +93,7 @@ class _SuggestionsScreenState extends State<SuggestionsScreen> {
                       }
                       return null;
                     },
-                    maxLength: 280,
+                    maxLength: 300,
                     decoration: InputDecoration(
                       labelText: 'Öneri',
                       border: OutlineInputBorder(

@@ -127,7 +127,7 @@ class ProfileScreen extends StatelessWidget {
                   'Cevaplananlar',
                   maxLines: 1,
                   stepGranularity: 1,
-                  minFontSize: 10,
+                  minFontSize: 9,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.yellow[900],

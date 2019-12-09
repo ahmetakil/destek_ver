@@ -65,6 +65,9 @@ class _NewComplainState extends State<NewComplain> {
   }
 
   void _submitData() async {
+    // HEMEN DÜZELT BUNU
+    _showDialog();
+
     if (!_formKey.currentState.validate()) {
       return;
     }
@@ -94,26 +97,53 @@ class _NewComplainState extends State<NewComplain> {
   }
 
   void _showDialog() {
-    // flutter deshowDfined function
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
-          title: Text(
-              "Talebiniz alındı ve ilgili birime iletiliyor. Destek verdiğiniz için teşekkürler!"),
-          actions: <Widget>[
-            // usually bttons at the bottom of the dialog
-            FlatButton(
-              child: Text(
-                "Anasayfaya Dön",
-              ),
-              onPressed: () {
-                locator<PageService>().setPage(0);
-                Navigator.of(context).pushReplacementNamed("/");
-              },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          content: Container(
+            height: MediaQuery.of(context).size.height * 0.3,
+            width: MediaQuery.of(context).size.width * 0.5,
+            child: Column(
+              children: <Widget>[
+                Image.asset(
+                 "assets/tick.png",
+                  fit: BoxFit.cover,
+                  width: 80,
+                  height: 80,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Talebiniz alındı ve ilgili birime iletiliyor. Destek verdiğiniz için teşekkürler!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18
+                  ),
+                ),
+                SizedBox(height: 10,),
+                FlatButton(
+                  child: Text(
+                    "Anasayfaya Dön",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 20
+                    ),
+                  ),
+                  onPressed: () {
+                    locator<PageService>().setPage(0);
+                    Navigator.of(context).pushReplacementNamed("/");
+                  },
+                ),
+              ],
             ),
-          ],
+          ),
         );
       },
     );
@@ -159,7 +189,7 @@ class _NewComplainState extends State<NewComplain> {
                         }
                         return null;
                       },
-                      maxLength: 280,
+                      maxLength: 300,
                       decoration: InputDecoration(
                         labelText: 'Şikayet',
                         border: OutlineInputBorder(
