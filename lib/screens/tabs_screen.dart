@@ -2,12 +2,15 @@ import 'package:DestekVer/services/locator.dart';
 import 'package:DestekVer/services/page_service.dart';
 import 'package:DestekVer/util/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../screens/suggestions_screen.dart';
 import '../screens/new_complain.dart';
 import '../screens/complain_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/survey_select_screen.dart';
+import 'package:DestekVer/search/custom_search_delegate.dart';
+import '../provider/complains_provider.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -18,7 +21,7 @@ class _TabsScreenState extends State<TabsScreen> {
   final navKey = GlobalKey();
 
   final List<Widget> _pages = [
-    ComplainScreen(),
+    ComplainScreen(searchBarComplainScreen: false,),
     SurveySelectScreen(),
     NewComplain(),
     SuggestionsScreen(),
@@ -32,6 +35,7 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     final pageService = locator<PageService>();
+    final complainsData = Provider.of<ComplainsProvider>(context);
 
     return DefaultTabController(
       length: _pages.length,
@@ -41,88 +45,12 @@ class _TabsScreenState extends State<TabsScreen> {
           actions: <Widget>[
             if (locator<PageService>().selectedPage == 0)
               IconButton(
-                icon: Icon(Icons.filter_list),
+                icon: Icon(Icons.search),
                 onPressed: () {
-                  showModalBottomSheet(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20)),
-                      ),
-                      context: context,
-                      builder: (BuildContext ctx) => Container(
-                            height: MediaQuery.of(context).size.height * 0.3,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Spacer(
-                                        flex: 2,
-                                      ),
-                                      Text(
-                                        "Filtreler",
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Spacer(),
-                                      FlatButton(
-                                        child: Text(
-                                          "UYGULA",
-                                          style: TextStyle(
-                                              color: Colors.amber[800]),
-                                        ),
-                                        onPressed: () {},
-                                      )
-                                    ],
-                                  ),
-                                  Divider(),
-                                  Row(
-                                    children: <Widget>[
-                                      Icon(Icons.alarm),
-                                      SizedBox(width: 7),
-                                      Text(
-                                        "Zamana göre Filtrele",
-                                        style: TextStyle(fontSize: 16),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Icon(Icons.add_location),
-                                      SizedBox(width: 7),
-                                      Text(
-                                        "Konuma göre Filtrele",
-                                        style: TextStyle(fontSize: 16),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Icon(Icons.filter_hdr),
-                                      SizedBox(width: 7),
-                                      Text(
-                                        "Müdürlüğe göre Filtrele",
-                                        style: TextStyle(fontSize: 16),
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ));
+                  showSearch(
+                    context: context,
+                    delegate: CustomSearchDelegate(complainsData.allComplains),
+                  );
                 },
               )
           ],

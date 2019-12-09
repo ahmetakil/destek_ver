@@ -5,8 +5,15 @@ import './complain_item.dart';
 import '../provider/complains_provider.dart';
 import '../models/complain.dart';
 
+enum complainFilter {
+  UNRESOLVED,
+  REPLIED,
+  SOLVED,
+  ALL,
+}
+
 class ComplainList extends StatelessWidget {
-  final int typeOfList;
+  final typeOfList;
 
   ComplainList(this.typeOfList);
 
@@ -16,26 +23,29 @@ class ComplainList extends StatelessWidget {
     List<Complain> complains = [];
 
     switch (typeOfList) {
-      case 0:
+      case complainFilter.UNRESOLVED:
         complains = complainData.unresolvedComplains;
         break;
-      case 1:
+      case complainFilter.REPLIED:
         complains = complainData.repliedComplains;
         break;
-      case 2:
+      case complainFilter.SOLVED:
         complains = complainData.solvedComplains;
+        break;
+      case complainFilter.ALL:
+        complains = complainData.allComplains;
         break;
       default:
         complains = complainData.unresolvedComplains;
     }
 
     return ListView.builder(
-          itemBuilder: (ctx, index) {
-            return ComplainItem(
-              complains[index],
-            );
-          },
-          itemCount: complains.length,
+      itemBuilder: (ctx, index) {
+        return ComplainItem(
+          complains[index],
         );
+      },
+      itemCount: complains.length,
+    );
   }
 }
