@@ -14,7 +14,8 @@ class DefaultAppBar extends StatefulWidget implements PreferredSizeWidget {
   _DefaultAppBarState createState() => _DefaultAppBarState();
 }
 
-class _DefaultAppBarState extends State<DefaultAppBar> with SingleTickerProviderStateMixin {
+class _DefaultAppBarState extends State<DefaultAppBar>
+    with SingleTickerProviderStateMixin {
   double rippleStartX, rippleStartY;
   AnimationController _controller;
   Animation _animation;
@@ -24,7 +25,8 @@ class _DefaultAppBarState extends State<DefaultAppBar> with SingleTickerProvider
   initState() {
     super.initState();
 
-    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    _controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
     _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
     _controller.addStatusListener(animationStatusListener);
   }
@@ -32,7 +34,7 @@ class _DefaultAppBarState extends State<DefaultAppBar> with SingleTickerProvider
   animationStatusListener(AnimationStatus animationStatus) {
     if (animationStatus == AnimationStatus.completed) {
       setState(() {
-       isInSearchMode = true; 
+        isInSearchMode = true;
       });
     }
   }
@@ -64,50 +66,40 @@ class _DefaultAppBarState extends State<DefaultAppBar> with SingleTickerProvider
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    return Stack(
-      children: [
-        AppBar(
-          title: Text(widget.appBarTitle),
-          actions: <Widget>[
-            GestureDetector(
-              child: IconButton(
-                icon: Icon(
-                  Icons.search,
-                  color: Colors.white,
-                ),
+    return Stack(children: [
+      AppBar(
+        title: Text(widget.appBarTitle),
+        actions: <Widget>[
+          GestureDetector(
+            child: IconButton(
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
               ),
-              onTapUp: onSearchTapUp,
             ),
-            IconButton(
-              icon: Icon(Icons.more_vert),
-              onPressed: () {},
-            )
-          ],
-        ),
-
-        AnimatedBuilder(
-          animation: _animation,
-          builder: (context, child) {
-            return CustomPaint(
-              painter: MyPainter(
-                containerHeight: widget.preferredSize.height,
-                center: Offset(rippleStartX ?? 0, rippleStartY ?? 0),
-                radius: _animation.value * screenWidth,
-                context: context,
-              ),
-            );
-          },
-        ),
-
-        isInSearchMode ? (
-          SearchBar(
-            onCancelSearch: cancelSearch,
-            onSearchQueryChanged: onSearchQueryChange,
-          )
-        ) : (
-          Container()
-        )
-      ]
-    );
+            onTapUp: onSearchTapUp,
+          ),
+        ],
+      ),
+      AnimatedBuilder(
+        animation: _animation,
+        builder: (context, child) {
+          return CustomPaint(
+            painter: MyPainter(
+              containerHeight: widget.preferredSize.height,
+              center: Offset(rippleStartX ?? 0, rippleStartY ?? 0),
+              radius: _animation.value * screenWidth,
+              context: context,
+            ),
+          );
+        },
+      ),
+      isInSearchMode
+          ? (SearchBar(
+              onCancelSearch: cancelSearch,
+              onSearchQueryChanged: onSearchQueryChange,
+            ))
+          : (Container())
+    ]);
   }
 }

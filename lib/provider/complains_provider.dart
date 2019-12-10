@@ -128,6 +128,8 @@ class ComplainsProvider with ChangeNotifier {
       fullAddress: await LocationUtil.getAddress(location),
       shortAddress: await LocationUtil.getShortAddress(),
       imageUrl: imageUrl,
+      replied: false,
+      solved: false,
     );
     _complains.add(newComp);
     //_complains.sort( (Complain c1,Complain c2) => c1.upVote.compareTo(c2.upVote));

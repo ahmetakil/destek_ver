@@ -7,17 +7,9 @@ import 'package:provider/provider.dart';
 
 import '../widget/complain_list.dart';
 
-enum complainFilter {
-  UNRESOLVED,
-  REPLIED,
-  SOLVED,
-  ALL,
-}
 
 class ComplainScreen extends StatelessWidget {
-  final bool searchBarComplainScreen;
 
-  ComplainScreen({this.searchBarComplainScreen});
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +45,7 @@ class ComplainScreen extends StatelessWidget {
       );
     }
 
-    return searchBarComplainScreen
-        ? ComplainList(complainFilter.ALL)
-        : DefaultTabController(
+    return DefaultTabController(
             length: 3,
             child: Scaffold(
               appBar: TabBar(
@@ -101,9 +91,9 @@ class ComplainScreen extends StatelessWidget {
               ),
               body: TabBarView(
                 children: <Widget>[
-                  ComplainList(complainFilter.UNRESOLVED),
-                  ComplainList(complainFilter.REPLIED),
-                  ComplainList(complainFilter.SOLVED),
+                  ComplainList(0),
+                  ComplainList(1),
+                  ComplainList(2),
                 ],
               ),
             ),

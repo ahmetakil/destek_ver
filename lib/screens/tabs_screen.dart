@@ -3,16 +3,12 @@ import 'package:DestekVer/services/locator.dart';
 import 'package:DestekVer/services/page_service.dart';
 import 'package:DestekVer/util/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../screens/suggestions_screen.dart';
 import '../screens/new_complain.dart';
 import '../screens/complain_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/survey_select_screen.dart';
-import 'package:DestekVer/search/custom_search_delegate.dart';
-import '../provider/complains_provider.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -23,9 +19,7 @@ class _TabsScreenState extends State<TabsScreen> {
   final navKey = GlobalKey();
 
   final List<Widget> _pages = [
-    ComplainScreen(
-      searchBarComplainScreen: false,
-    ),
+    ComplainScreen(),
     SurveySelectScreen(),
     NewComplain(),
     SuggestionsScreen(),

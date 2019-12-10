@@ -7,7 +7,6 @@ import 'package:DestekVer/services/page_service.dart';
 import 'package:DestekVer/widget/location_input.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as prefix0;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -87,6 +86,7 @@ class _NewComplainState extends State<NewComplain> {
         location: loc,
         date: DateTime.now(),
         imageUrl: _imageUrl,
+        
       );
       locationProvider.location = null;
       _showDialog();
@@ -109,8 +109,8 @@ class _NewComplainState extends State<NewComplain> {
                 Image.asset(
                   "assets/tick_logo.jpg",
                   fit: BoxFit.cover,
-                  width: 80,
-                  height: 80,
+                  width: 150,
+                  height: 150,
                 ),
                 SizedBox(
                   height: 10,
