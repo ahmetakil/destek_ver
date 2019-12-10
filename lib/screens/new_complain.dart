@@ -100,56 +100,42 @@ class _NewComplainState extends State<NewComplain> {
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          content: Flex(
-            direction: Axis.vertical,
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.12,
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset(
-                       "assets/tick.png",
-                        fit: BoxFit.cover,
-                        width: 80,
-                        height: 80,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "Talebiniz alındı ve ilgili birime iletiliyor. Destek verdiğiniz için teşekkürler!",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18
-                        ),
-                      ),
-                      SizedBox(height: 10,),
-                      FlatButton(
-                        child: Text(
-                          "Anasayfaya Dön",
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 20
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                          locator<PageService>().setPage(0);
-                          Navigator.of(context).pushReplacementNamed('/');
-                        },
-                      ),
-                    ],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  "assets/tick.png",
+                  fit: BoxFit.cover,
+                  width: 80,
+                  height: 80,
                 ),
-              ),
-              ),
-            ],
-          ),
-        );
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Talebiniz alındı ve ilgili birime iletiliyor. Destek verdiğiniz için teşekkürler!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 18),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                FlatButton(
+                  child: Text(
+                    "Anasayfaya Dön",
+                    style: TextStyle(color: Colors.blue, fontSize: 20),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    locator<PageService>().setPage(0);
+                    Navigator.of(context).pushReplacementNamed('/');
+                  },
+                ),
+              ],
+            ));
       },
     );
   }
