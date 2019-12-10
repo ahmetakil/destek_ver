@@ -1,9 +1,7 @@
 import 'package:DestekVer/models/question_answer.dart';
 import 'package:DestekVer/widget/survey_item.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import '../data/dummy_data.dart';
-import '../util/utils.dart';
 
 class SurveyScreen extends StatefulWidget {
   static const routeName = '/surveyScreen';

@@ -25,11 +25,11 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          builder: (_) => ComplainsProvider(),
+        ChangeNotifierProvider.value(
+          value: ComplainsProvider(),
         ),
-        ChangeNotifierProvider(
-          builder: (_) => LocationProvider(),
+        ChangeNotifierProvider.value(
+          value: LocationProvider(),
         )
       ],
       child: MaterialApp(

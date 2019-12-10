@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../models/complain.dart';
-import '../screens/profile_screen.dart';
 import '../screens/complain_detail_screen.dart';
 import '../util/utils.dart';
 
