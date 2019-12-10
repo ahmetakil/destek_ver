@@ -1,5 +1,6 @@
 import 'package:DestekVer/screens/map_screen.dart';
 import 'package:DestekVer/util/utils.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -29,8 +30,11 @@ class _ComplainDetailScreenItemState extends State<ComplainDetailScreenItem> {
             children: <Widget>[
               Container(
                 alignment: Alignment.centerLeft,
-                child: Text(
+                child: AutoSizeText(
                   widget.comp.complainTopic,
+                  maxLines: 2,
+                  minFontSize: 10,
+                  stepGranularity: 1,
                   overflow: TextOverflow.fade,
                   style: TextStyle(
                     fontSize: screenSize(20,context),

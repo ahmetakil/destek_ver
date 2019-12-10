@@ -68,30 +68,33 @@ class _ComplainItemState extends State<ComplainItem> {
               Container(
                 padding: EdgeInsets.only(left:10,right:10),
                 height: screenSize(100.0, context),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      comp.complainTopic,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Flexible(
-                      child: AutoSizeText(
-                        comp.complain,
-                        maxLines: 5,
-                        minFontSize: 12,
+                child: Container(
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        comp.complainTopic,
                         style: TextStyle(
-                          fontSize: screenSize(12, context)
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Flexible(
+                        child: AutoSizeText(
+                          comp.complain,
+                          maxLines: 5,
+                          minFontSize: 12,
+                          style: TextStyle(
+                            fontSize: screenSize(12, context)
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               Padding(

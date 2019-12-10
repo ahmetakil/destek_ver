@@ -65,9 +65,6 @@ class _NewComplainState extends State<NewComplain> {
   }
 
   void _submitData() async {
-    // HEMEN DÜZELT BUNU
-    _showDialog();
-
     if (!_formKey.currentState.validate()) {
       return;
     }
@@ -106,43 +103,51 @@ class _NewComplainState extends State<NewComplain> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          content: Container(
-            height: MediaQuery.of(context).size.height * 0.3,
-            width: MediaQuery.of(context).size.width * 0.5,
-            child: Column(
-              children: <Widget>[
-                Image.asset(
-                 "assets/tick.png",
-                  fit: BoxFit.cover,
-                  width: 80,
-                  height: 80,
+          content: Flex(
+            direction: Axis.vertical,
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.12,
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset(
+                       "assets/tick.png",
+                        fit: BoxFit.cover,
+                        width: 80,
+                        height: 80,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Talebiniz alındı ve ilgili birime iletiliyor. Destek verdiğiniz için teşekkürler!",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      FlatButton(
+                        child: Text(
+                          "Anasayfaya Dön",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 20
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          locator<PageService>().setPage(0);
+                          Navigator.of(context).pushReplacementNamed('/');
+                        },
+                      ),
+                    ],
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Talebiniz alındı ve ilgili birime iletiliyor. Destek verdiğiniz için teşekkürler!",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 18
-                  ),
-                ),
-                SizedBox(height: 10,),
-                FlatButton(
-                  child: Text(
-                    "Anasayfaya Dön",
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 20
-                    ),
-                  ),
-                  onPressed: () {
-                    locator<PageService>().setPage(0);
-                    Navigator.of(context).pushReplacementNamed("/");
-                  },
-                ),
-              ],
-            ),
+              ),
+              ),
+            ],
           ),
         );
       },
@@ -161,6 +166,7 @@ class _NewComplainState extends State<NewComplain> {
               child: SingleChildScrollView(
                 padding: EdgeInsets.all(20),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
                       validator: (String value) {

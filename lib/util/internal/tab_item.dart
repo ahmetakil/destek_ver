@@ -47,10 +47,12 @@ class TabItem extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: AutoSizeText(
                     title,
-                    overflow: TextOverflow.ellipsis,
+                    overflow: TextOverflow.visible,
                     maxLines: 1,
+                    minFontSize: 10,
                     style: TextStyle(
-                        fontWeight: FontWeight.w600, color: textColor),
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 )),
           ),
@@ -67,10 +69,11 @@ class TabItem extends StatelessWidget {
                 child: IconButton(
                   highlightColor: Colors.transparent,
                   splashColor: Colors.transparent,
-                  padding: EdgeInsets.all(0),
+                  padding: EdgeInsets.all(10),
                   alignment: Alignment(0, 0),
                   icon: Icon(
                     iconData,
+                    size: 25,
                     color: iconColor,
                   ),
                   onPressed: () {
