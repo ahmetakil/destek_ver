@@ -107,7 +107,7 @@ class _NewComplainState extends State<NewComplain> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Image.asset(
-                  "assets/tick.png",
+                  "assets/tick_logo.jpg",
                   fit: BoxFit.cover,
                   width: 80,
                   height: 80,
