@@ -36,13 +36,13 @@ class _SurveyItemState extends State<SurveyItem> {
           }),
           initialRating: _rating,
           filledIcon: Icons.star,
-          emptyIcon: Icons.star_border,
+          emptyIcon: Icons.star,
           halfFilledIcon: Icons.star_half,
           isHalfAllowed: true,
           filledColor: Color.fromRGBO(255, 215, 0, 1),
-          emptyColor: Colors.black,
+          emptyColor: Colors.grey,
           halfFilledColor: Colors.yellow,
-          size: 48,
+          size: 36,
         ),
       ],
     );
@@ -124,7 +124,6 @@ class _SurveyItemState extends State<SurveyItem> {
                 borderRadius: BorderRadius.circular(15),
                 child: GridTile(
                   child: CachedNetworkImage(
-                    
                     imageUrl: answer.imageUrl,
                     imageBuilder: (context, imageProvider) => Container(
                       decoration: BoxDecoration(
@@ -174,7 +173,7 @@ class _SurveyItemState extends State<SurveyItem> {
   Widget buildQuestion(String question, Widget widget) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.95,
-      margin: EdgeInsets.only(top:5),
+      margin: EdgeInsets.only(top: 5),
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
