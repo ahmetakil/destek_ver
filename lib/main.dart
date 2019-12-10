@@ -34,7 +34,6 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp(
         title: 'Destek Ver',
-        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primaryColor: Colors.green,
           accentColor: Colors.black,

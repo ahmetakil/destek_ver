@@ -1,6 +1,6 @@
+import 'package:DestekVer/search/default_app_bar.dart';
 import 'package:DestekVer/services/locator.dart';
 import 'package:DestekVer/services/page_service.dart';
-import 'package:DestekVer/util/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,6 +11,8 @@ import '../screens/profile_screen.dart';
 import '../screens/survey_select_screen.dart';
 import 'package:DestekVer/search/custom_search_delegate.dart';
 import '../provider/complains_provider.dart';
+import '../bottomNavigationBar/fancy_bottom_navigation-0.3.2/lib/fancy_bottom_navigation.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -21,7 +23,9 @@ class _TabsScreenState extends State<TabsScreen> {
   final navKey = GlobalKey();
 
   final List<Widget> _pages = [
-    ComplainScreen(searchBarComplainScreen: false,),
+    ComplainScreen(
+      searchBarComplainScreen: false,
+    ),
     SurveySelectScreen(),
     NewComplain(),
     SuggestionsScreen(),
@@ -35,61 +39,23 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     final pageService = locator<PageService>();
-    final complainsData = Provider.of<ComplainsProvider>(context);
 
     return DefaultTabController(
       length: _pages.length,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(pageService.appBarTitles[pageService.selectedPage]),
-          actions: <Widget>[
-            if (locator<PageService>().selectedPage == 0)
-              IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  showSearch(
-                    context: context,
-                    delegate: CustomSearchDelegate(complainsData.allComplains),
-                  );
-                },
-              )
-          ],
-        ),
+        appBar:
+            DefaultAppBar(pageService.appBarTitles[pageService.selectedPage]),
         body: getBody(),
-        bottomNavigationBar: CurvedNavigationBar(
-          height: 60,
+        bottomNavigationBar: FancyBottomNavigation(
           key: navKey,
-          animationDuration: Duration(milliseconds: 200),
-          color: Color.fromRGBO(76, 175, 80, 1),
-          backgroundColor: Colors.transparent,
-          items: <Widget>[
-            Icon(
-              Icons.message,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.dehaze,
-              color: Colors.white,
-              size: 35,
-            ),
-            Icon(
-              Icons.edit,
-              size: 40,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.chat_bubble_outline,
-              color: Colors.white,
-              size: 35,
-            ),
-            Icon(
-              Icons.person,
-              color: Colors.white,
-              size: 35,
-            ),
+          tabs: [
+            TabData(iconData: Icons.message, title: "Şikayetler"),
+            TabData(iconData: Icons.dehaze, title: "Anketler"),
+            TabData(iconData: Icons.edit, title: "Ekle"),
+            TabData(iconData: Icons.chat_bubble_outline, title: "Öneriler"),
+            TabData(iconData: Icons.chat_bubble_outline, title: "Öneriler"),
           ],
-          onTap: (int selectedPage) {
+          onTabChangedListener: (int selectedPage) {
             setState(() {
               locator<PageService>().setPage(selectedPage);
             });

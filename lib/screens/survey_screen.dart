@@ -89,9 +89,9 @@ class _SurveyScreenState extends State<SurveyScreen> {
     List<String> questions = QUESTIONS[survey];
 
     return Scaffold(
-      floatingActionButton: RaisedButton(
+      floatingActionButton: FloatingActionButton(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(30),
         ),
         onPressed: () {
           print(allQuestionsAnswered());
@@ -101,32 +101,30 @@ class _SurveyScreenState extends State<SurveyScreen> {
             _showDialog(allQuestionsAnswered());
           }
         },
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(
-                Icons.send,
-                color: Colors.white,
-                size: 20,
-              ),
-              SizedBox(
-                width: 8,
-              ),
-              AutoSizeText(
-                'Gönder',
-                minFontSize: 10,
-                stepGranularity: 1,
-                maxLines: 1,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14
-                ),
-              ),
-            ],
-          ),
-        ),
-        color: Colors.green,
+        child: Icon(Icons.send),
+        backgroundColor: Colors.green,
+        // child: Row(
+        //   mainAxisSize: MainAxisSize.min,
+        //   children: <Widget>[
+        //     FloatingActionButton(
+        //       child: Icon(Icons.send),
+        //       onPressed: () {},
+        //     ),
+        //     SizedBox(
+        //       width: 8,
+        //     ),
+        //     // AutoSizeText(
+        //     //   'Gönder',
+        //     //   minFontSize: 10,
+        //     //   stepGranularity: 1,
+        //     //   maxLines: 1,
+        //     //   style: TextStyle(
+        //     //     color: Colors.white,
+        //     //     fontSize: 14
+        //     //   ),
+        //     // ),
+        //   ],
+        // ),
       ),
       appBar: AppBar(
         title: Text(
