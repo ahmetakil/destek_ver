@@ -7,7 +7,18 @@ import 'package:provider/provider.dart';
 
 import '../widget/complain_list.dart';
 
+enum complainFilter {
+  UNRESOLVED,
+  REPLIED,
+  SOLVED,
+  ALL,
+}
+
 class ComplainScreen extends StatelessWidget {
+  final bool searchBarComplainScreen;
+
+  ComplainScreen({this.searchBarComplainScreen});
+
   @override
   Widget build(BuildContext context) {
     final complains = Provider.of<ComplainsProvider>(context);
@@ -42,58 +53,60 @@ class ComplainScreen extends StatelessWidget {
       );
     }
 
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: TabBar(
-          indicatorColor: Colors.green,
-          tabs: <Widget>[
-            Tab(
-              child: AutoSizeText(
-                "Yeni Şikayetler",
-                textAlign: TextAlign.center,
-                minFontSize: 10,
-                maxLines: 2,
-                stepGranularity: 1,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: screenSize(12.5, context),
-                ),
+    return searchBarComplainScreen
+        ? ComplainList(complainFilter.ALL)
+        : DefaultTabController(
+            length: 3,
+            child: Scaffold(
+              appBar: TabBar(
+                indicatorColor: Colors.green,
+                tabs: <Widget>[
+                  Tab(
+                    child: AutoSizeText(
+                      "Yeni Şikayetler",
+                      textAlign: TextAlign.center,
+                      minFontSize: 10,
+                      maxLines: 2,
+                      stepGranularity: 1,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: screenSize(12.5, context),
+                      ),
+                    ),
+                  ),
+                  Tab(
+                      child: AutoSizeText(
+                    'Cevaplananlar',
+                    minFontSize: 10,
+                    maxLines: 1,
+                    stepGranularity: 1,
+                    style: TextStyle(
+                      color: Colors.yellow[900],
+                      fontSize: screenSize(12.5, context),
+                    ),
+                  )),
+                  Tab(
+                    child: AutoSizeText(
+                      "Çözülenler",
+                      minFontSize: 10,
+                      maxLines: 1,
+                      stepGranularity: 1,
+                      style: TextStyle(
+                        color: Color(0xff00681D),
+                        fontSize: screenSize(12.5, context),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              body: TabBarView(
+                children: <Widget>[
+                  ComplainList(complainFilter.UNRESOLVED),
+                  ComplainList(complainFilter.REPLIED),
+                  ComplainList(complainFilter.SOLVED),
+                ],
               ),
             ),
-            Tab(
-                child: AutoSizeText(
-              'Cevaplananlar',
-              minFontSize: 10,
-              maxLines: 1,
-              stepGranularity: 1,
-              style: TextStyle(
-                color: Colors.yellow[900],
-                fontSize: screenSize(12.5, context),
-              ),
-            )),
-            Tab(
-              child: AutoSizeText(
-                "Çözülenler",
-                minFontSize: 10,
-                maxLines: 1,
-                stepGranularity: 1,
-                style: TextStyle(
-                  color: Color(0xff00681D),
-                  fontSize: screenSize(12.5, context),
-                ),
-              ),
-            ),
-          ],
-        ),
-        body: TabBarView(
-          children: <Widget>[
-            ComplainList(0),
-            ComplainList(1),
-            ComplainList(2),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }

@@ -124,6 +124,7 @@ class _SurveyItemState extends State<SurveyItem> {
                 borderRadius: BorderRadius.circular(15),
                 child: GridTile(
                   child: CachedNetworkImage(
+                    
                     imageUrl: answer.imageUrl,
                     imageBuilder: (context, imageProvider) => Container(
                       decoration: BoxDecoration(
