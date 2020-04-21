@@ -68,6 +68,7 @@ class _NewComplainState extends State<NewComplain> {
       return;
     }
 
+
     final locationProvider =
         Provider.of<LocationProvider>(context, listen: false);
     LatLng loc = locationProvider.location;
